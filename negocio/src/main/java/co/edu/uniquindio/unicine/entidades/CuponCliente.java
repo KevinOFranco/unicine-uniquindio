@@ -1,33 +1,30 @@
 package co.edu.uniquindio.unicine.entidades;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
 @ToString
 @EqualsAndHashCode (onlyExplicitlyIncluded = true)
-public class Compra  implements Serializable {
-
+public class CuponCliente implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
 
-    @OneToOne  (mappedBy = "compra")
-    private CuponCliente cuponCliente;
+    @OneToOne
+    private Compra compra;
 
     @ManyToOne
     private Cliente cliente;
-
-    @OneToMany (mappedBy = "compra")
-    private List<Entrada> entradas;
-    @OneToMany (mappedBy = "compra")
-    private List<CompraConfiteria> confiterias;
+    @ManyToOne
+    private Cupon cupon;
 }

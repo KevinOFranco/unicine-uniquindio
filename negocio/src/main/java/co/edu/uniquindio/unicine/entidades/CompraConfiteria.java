@@ -1,35 +1,34 @@
 package co.edu.uniquindio.unicine.entidades;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
-@Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
 @ToString
 @EqualsAndHashCode (onlyExplicitlyIncluded = true)
-public class Confiteria  implements Serializable {
+public class CompraConfiteria implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
     @Column (nullable = false)
-    private String titulo;
-    @Column (nullable = false)
-    private String descripcion;
+    @Positive
+    private Integer unidades;
     @Column (nullable = false)
     @PositiveOrZero
     private Double precio;
-    @Column (nullable = false)
-    private String imagen;
 
-    @OneToMany (mappedBy = "confiteria")
-    private List<CompraConfiteria> confiterias;
-
+    @ManyToOne
+    private Compra compra;
+    @ManyToOne
+    private Confiteria confiteria;
 }

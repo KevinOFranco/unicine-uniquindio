@@ -2,9 +2,7 @@ package co.edu.uniquindio.unicine.entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -17,7 +15,15 @@ import java.io.Serializable;
 public class Entrada  implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
+
+    @OneToOne
+    private Silla silla;
+
+    @ManyToOne
+    private Funcion funcion;
+    @ManyToOne
+    private Compra compra;
 }

@@ -2,10 +2,10 @@ package co.edu.uniquindio.unicine.entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,8 +16,20 @@ import java.io.Serializable;
 @EqualsAndHashCode (onlyExplicitlyIncluded = true)
 public class Funcion  implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
-    private Float precio;
+    @Column (nullable = false)
+    @PositiveOrZero
+    private Double precio;
+
+    @ManyToOne
+    private Sala sala;
+    @ManyToOne
+    private Horario horario;
+    @ManyToOne
+    private Pelicula pelicula;
+
+    @OneToMany (mappedBy = "funcion")
+    private List<Entrada> entradas;
 }

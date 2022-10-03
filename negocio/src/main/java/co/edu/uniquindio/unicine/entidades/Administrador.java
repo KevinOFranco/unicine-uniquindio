@@ -10,10 +10,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode (onlyExplicitlyIncluded = true)
 public class Administrador extends Persona implements Serializable {
