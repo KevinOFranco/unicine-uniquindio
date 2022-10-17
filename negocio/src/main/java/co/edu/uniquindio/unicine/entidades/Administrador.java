@@ -11,7 +11,6 @@ import java.time.LocalDate;
 
 @Entity
 @ToString
-@EqualsAndHashCode (onlyExplicitlyIncluded = true)
 public class Administrador extends Persona implements Serializable {
 
 }

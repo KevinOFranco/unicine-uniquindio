@@ -34,4 +34,21 @@ public class Persona implements Serializable {
     private LocalDate fechaNacimiento;
     @ElementCollection //Crea una tabla con la lista
     private Map<String,String> telefono;
+
+    public Persona(String nombre, String cedula, String email, String password, LocalDate fechaNacimiento) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.email = email;
+        this.password = password;
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Persona(String nombre, String cedula, String email, String password, LocalDate fechaNacimiento, Map<String, String> telefono) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.email = email;
+        this.password = password;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+    }
 }

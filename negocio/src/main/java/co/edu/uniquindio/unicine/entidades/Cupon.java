@@ -29,5 +29,15 @@ public class Cupon  implements Serializable {
     private LocalDate fechaVencimiento;
 
     @OneToMany (mappedBy = "cupon")
+    @ToString.Exclude
     private List<CuponCliente> cuponClientes;
+
+    @Builder
+    public Cupon(String codigo, String criterio, String descripcion, Byte porcentajeDescuento, LocalDate fechaVencimiento) {
+        this.codigo = codigo;
+        this.criterio = criterio;
+        this.descripcion = descripcion;
+        this.porcentajeDescuento = porcentajeDescuento;
+        this.fechaVencimiento = fechaVencimiento;
+    }
 }

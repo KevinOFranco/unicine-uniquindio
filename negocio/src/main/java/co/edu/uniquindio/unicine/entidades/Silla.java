@@ -3,8 +3,6 @@ package co.edu.uniquindio.unicine.entidades;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 
 @Entity
@@ -20,12 +18,18 @@ public class Silla  implements Serializable {
     @EqualsAndHashCode.Include
     private Long id;
     @Column (nullable = false)
-    @PositiveOrZero
-    private Short numero;
+    private String ubicacion;
 
     @OneToOne (mappedBy = "silla")
     private Entrada entrada;
 
     @ManyToOne
     private Sala sala;
+
+    @Builder
+
+    public Silla(String ubicacion, Sala sala) {
+        this.ubicacion = ubicacion;
+        this.sala = sala;
+    }
 }

@@ -22,4 +22,11 @@ public class PeliculaFavorita  implements Serializable {
     private Pelicula pelicula;
     @ManyToOne
     private Cliente cliente;
+
+    @Builder
+
+    public PeliculaFavorita(Pelicula pelicula, Cliente cliente) {
+        this.pelicula = pelicula;
+        this.cliente = cliente;
+    }
 }

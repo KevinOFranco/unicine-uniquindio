@@ -24,5 +24,13 @@ public class Ciudad  implements Serializable {
     @Column (nullable = false)
     private String nombre;
     @OneToMany(mappedBy = "ciudad")
+    @ToString.Exclude
     private List<Teatro> teatros;
+
+    @Builder
+
+    public Ciudad(String departamento, String nombre) {
+        this.departamento = departamento;
+        this.nombre = nombre;
+    }
 }

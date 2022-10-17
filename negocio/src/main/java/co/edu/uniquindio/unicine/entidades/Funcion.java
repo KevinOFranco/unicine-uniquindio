@@ -31,5 +31,14 @@ public class Funcion  implements Serializable {
     private Pelicula pelicula;
 
     @OneToMany (mappedBy = "funcion")
+    @ToString.Exclude
     private List<Entrada> entradas;
+
+    @Builder
+    public Funcion(Double precio, Sala sala, Horario horario, Pelicula pelicula) {
+        this.precio = precio;
+        this.sala = sala;
+        this.horario = horario;
+        this.pelicula = pelicula;
+    }
 }

@@ -26,4 +26,11 @@ public class Entrada  implements Serializable {
     private Funcion funcion;
     @ManyToOne
     private Compra compra;
+
+    @Builder
+
+    public Entrada(Silla silla, Funcion funcion) {
+        this.silla = silla;
+        this.funcion = funcion;
+    }
 }

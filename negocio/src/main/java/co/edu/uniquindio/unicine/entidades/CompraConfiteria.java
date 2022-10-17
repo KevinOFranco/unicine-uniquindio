@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unicine.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Positive;
@@ -13,6 +10,8 @@ import java.io.Serializable;
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @EqualsAndHashCode (onlyExplicitlyIncluded = true)
 public class CompraConfiteria implements Serializable {
@@ -31,4 +30,11 @@ public class CompraConfiteria implements Serializable {
     private Compra compra;
     @ManyToOne
     private Confiteria confiteria;
+
+    @Builder
+
+    public CompraConfiteria(Integer unidades, Confiteria confiteria) {
+        this.unidades = unidades;
+        this.confiteria = confiteria;
+    }
 }

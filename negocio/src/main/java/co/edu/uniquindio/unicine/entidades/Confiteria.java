@@ -30,6 +30,14 @@ public class Confiteria  implements Serializable {
     private String imagen;
 
     @OneToMany (mappedBy = "confiteria")
+    @ToString.Exclude
     private List<CompraConfiteria> confiterias;
 
+    @Builder
+    public Confiteria(String titulo, String descripcion, Double precio, String imagen) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.imagen = imagen;
+    }
 }
