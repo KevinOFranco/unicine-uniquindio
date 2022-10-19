@@ -136,6 +136,301 @@ insert into funcion values (4, 40, 3, 4, 4);
 insert into funcion values (5, 50, 4, 1, 5);
 
 
+insert into silla values (1, "A1", 1);
+insert into silla values (2, "A2", 1);
+insert into silla values (3, "A3", 1);
+insert into silla values (4, "A4", 1);
+insert into silla values (5, "A5", 1);
+insert into silla values (6, "A6", 1);
+insert into silla values (7, "A7", 1);
+insert into silla values (8, "A8", 1);
+
+insert into silla values (9, "B1", 1);
+insert into silla values (10, "B2", 1);
+insert into silla values (11, "B3", 1);
+insert into silla values (12, "B4", 1);
+insert into silla values (13, "B5", 1);
+insert into silla values (14, "B6", 1);
+insert into silla values (15, "B7", 1);
+insert into silla values (16, "B8", 1);
+
+insert into silla values (17, "C1", 1);
+insert into silla values (18, "C2", 1);
+insert into silla values (19, "C3", 1);
+insert into silla values (20, "C4", 1);
+insert into silla values (21, "C5", 1);
+insert into silla values (22, "C6", 1);
+insert into silla values (23, "C7", 1);
+insert into silla values (24, "C8", 1);
+
+insert into silla values (25, "D1", 1);
+insert into silla values (26, "D2", 1);
+insert into silla values (27, "D3", 1);
+insert into silla values (28, "D4", 1);
+insert into silla values (29, "D5", 1);
+insert into silla values (30, "D6", 1);
+insert into silla values (31, "D7", 1);
+insert into silla values (32, "D8", 1);
+
+insert into silla values (33, "E1", 1);
+insert into silla values (34, "E2", 1);
+insert into silla values (35, "E3", 1);
+insert into silla values (36, "E4", 1);
+insert into silla values (37, "E5", 1);
+insert into silla values (38, "E6", 1);
+insert into silla values (39, "E7", 1);
+insert into silla values (40, "E8", 1);
+
+insert into silla values (41, "F1", 1);
+insert into silla values (42, "F2", 1);
+insert into silla values (43, "F3", 1);
+insert into silla values (44, "F4", 1);
+insert into silla values (45, "F5", 1);
+insert into silla values (46, "F6", 1);
+insert into silla values (47, "F7", 1);
+insert into silla values (48, "F8", 1);
+
+insert into silla values (49, "G1", 1);
+insert into silla values (50, "G2", 1);
+insert into silla values (51, "G3", 1);
+insert into silla values (52, "G4", 1);
+insert into silla values (53, "G5", 1);
+insert into silla values (54, "G6", 1);
+insert into silla values (55, "G7", 1);
+insert into silla values (56, "G8", 1);
+
+insert into silla values (57, "H1", 1);
+insert into silla values (58, "H2", 1);
+insert into silla values (59, "H3", 1);
+insert into silla values (60, "H4", 1);
+insert into silla values (61, "H5", 1);
+insert into silla values (62, "H6", 1);
+insert into silla values (63, "H7", 1);
+insert into silla values (64, "H8", 1);
+
+insert into silla values (65, "A1", 2);
+insert into silla values (66, "A2", 2);
+insert into silla values (67, "A3", 2);
+insert into silla values (68, "A4", 2);
+insert into silla values (69, "A5", 2);
+insert into silla values (70, "A6", 2);
+insert into silla values (71, "A7", 2);
+insert into silla values (72, "A8", 2);
+
+insert into silla values (73, "B1", 2);
+insert into silla values (74, "B2", 2);
+insert into silla values (75, "B3", 2);
+insert into silla values (76, "B4", 2);
+insert into silla values (77, "B5", 2);
+insert into silla values (78, "B6", 2);
+insert into silla values (79, "B7", 2);
+insert into silla values (80, "B8", 2);
+
+insert into silla values (81, "C1", 2);
+insert into silla values (82, "C2", 2);
+insert into silla values (83, "C3", 2);
+insert into silla values (84, "C4", 2);
+insert into silla values (85, "C5", 2);
+insert into silla values (86, "C6", 2);
+insert into silla values (87, "C7", 2);
+insert into silla values (88, "C8", 2);
+
+insert into silla values (89, "D1", 2);
+insert into silla values (90, "D2", 2);
+insert into silla values (91, "D3", 2);
+insert into silla values (92, "D4", 2);
+insert into silla values (93, "D5", 2);
+insert into silla values (94, "D6", 2);
+insert into silla values (95, "D7", 2);
+insert into silla values (96, "D8", 2);
+
+insert into silla values (97, "E1", 2);
+insert into silla values (98, "E2", 2);
+insert into silla values (99, "E3", 2);
+insert into silla values (100, "E4", 2);
+insert into silla values (101, "E5", 2);
+insert into silla values (102, "E6", 2);
+insert into silla values (103, "E7", 2);
+insert into silla values (104, "E8", 2);
+
+insert into silla values (105, "F1", 2);
+insert into silla values (106, "F2", 2);
+insert into silla values (107, "F3", 2);
+insert into silla values (108, "F4", 2);
+insert into silla values (109, "F5", 2);
+insert into silla values (110, "F6", 2);
+insert into silla values (111, "F7", 2);
+insert into silla values (112, "F8", 2);
+
+insert into silla values (113, "G1", 2);
+insert into silla values (114, "G2", 2);
+insert into silla values (115, "G3", 2);
+insert into silla values (116, "G4", 2);
+insert into silla values (117, "G5", 2);
+insert into silla values (118, "G6", 2);
+insert into silla values (119, "G7", 2);
+insert into silla values (120, "G8", 2);
+
+insert into silla values (121, "H1", 2);
+insert into silla values (122, "H2", 2);
+insert into silla values (123, "H3", 2);
+insert into silla values (124, "H4", 2);
+insert into silla values (125, "H5", 2);
+insert into silla values (126, "H6", 2);
+insert into silla values (127, "H7", 2);
+insert into silla values (128, "H8", 2);
+
+insert into silla values (129, "A1", 3);
+insert into silla values (130, "A2", 3);
+insert into silla values (131, "A3", 3);
+insert into silla values (132, "A4", 3);
+insert into silla values (133, "A5", 3);
+insert into silla values (134, "A6", 3);
+insert into silla values (135, "A7", 3);
+insert into silla values (136, "A8", 3);
+
+insert into silla values (137, "B1", 3);
+insert into silla values (138, "B2", 3);
+insert into silla values (139, "B3", 3);
+insert into silla values (140, "B4", 3);
+insert into silla values (141, "B5", 3);
+insert into silla values (142, "B6", 3);
+insert into silla values (143, "B7", 3);
+insert into silla values (144, "B8", 3);
+
+insert into silla values (145, "C1", 3);
+insert into silla values (146, "C2", 3);
+insert into silla values (147, "C3", 3);
+insert into silla values (148, "C4", 3);
+insert into silla values (149, "C5", 3);
+insert into silla values (150, "C6", 3);
+insert into silla values (151, "C7", 3);
+insert into silla values (152, "C8", 3);
+
+insert into silla values (153, "D1", 3);
+insert into silla values (154, "D2", 3);
+insert into silla values (155, "D3", 3);
+insert into silla values (156, "D4", 3);
+insert into silla values (157, "D5", 3);
+insert into silla values (158, "D6", 3);
+insert into silla values (159, "D7", 3);
+insert into silla values (160, "D8", 3);
+
+insert into silla values (161, "E1", 3);
+insert into silla values (162, "E2", 3);
+insert into silla values (163, "E3", 3);
+insert into silla values (164, "E4", 3);
+insert into silla values (165, "E5", 3);
+insert into silla values (166, "E6", 3);
+insert into silla values (167, "E7", 3);
+insert into silla values (168, "E8", 3);
+
+insert into silla values (169, "F1", 3);
+insert into silla values (170, "F2", 3);
+insert into silla values (171, "F3", 3);
+insert into silla values (172, "F4", 3);
+insert into silla values (173, "F5", 3);
+insert into silla values (174, "F6", 3);
+insert into silla values (175, "F7", 3);
+insert into silla values (176, "F8", 3);
+
+insert into silla values (177, "G1", 3);
+insert into silla values (178, "G2", 3);
+insert into silla values (179, "G3", 3);
+insert into silla values (180, "G4", 3);
+insert into silla values (181, "G5", 3);
+insert into silla values (182, "G6", 3);
+insert into silla values (183, "G7", 3);
+insert into silla values (184, "G8", 3);
+
+insert into silla values (185, "H1", 3);
+insert into silla values (186, "H2", 3);
+insert into silla values (187, "H3", 3);
+insert into silla values (188, "H4", 3);
+insert into silla values (189, "H5", 3);
+insert into silla values (190, "H6", 3);
+insert into silla values (191, "H7", 3);
+insert into silla values (192, "H8", 3);
+
+insert into silla values (193, "A1", 4);
+insert into silla values (194, "A2", 4);
+insert into silla values (195, "A3", 4);
+insert into silla values (196, "A4", 4);
+insert into silla values (197, "A5", 4);
+insert into silla values (198, "A6", 4);
+insert into silla values (199, "A7", 4);
+insert into silla values (200, "A8", 4);
+
+insert into silla values (201, "B1", 4);
+insert into silla values (202, "B2", 4);
+insert into silla values (203, "B3", 4);
+insert into silla values (204, "B4", 4);
+insert into silla values (205, "B5", 4);
+insert into silla values (206, "B6", 4);
+insert into silla values (207, "B7", 4);
+insert into silla values (208, "B8", 4);
+
+insert into silla values (209, "C1", 4);
+insert into silla values (210, "C2", 4);
+insert into silla values (211, "C3", 4);
+insert into silla values (212, "C4", 4);
+insert into silla values (213, "C5", 4);
+insert into silla values (214, "C6", 4);
+insert into silla values (215, "C7", 4);
+insert into silla values (216, "C8", 4);
+
+insert into silla values (217, "D1", 4);
+insert into silla values (218, "D2", 4);
+insert into silla values (219, "D3", 4);
+insert into silla values (220, "D4", 4);
+insert into silla values (221, "D5", 4);
+insert into silla values (222, "D6", 4);
+insert into silla values (223, "D7", 4);
+insert into silla values (224, "D8", 4);
+
+insert into silla values (225, "E1", 4);
+insert into silla values (226, "E2", 4);
+insert into silla values (227, "E3", 4);
+insert into silla values (228, "E4", 4);
+insert into silla values (229, "E5", 4);
+insert into silla values (230, "E6", 4);
+insert into silla values (231, "E7", 4);
+insert into silla values (232, "E8", 4);
+
+insert into silla values (233, "F1", 4);
+insert into silla values (234, "F2", 4);
+insert into silla values (235, "F3", 4);
+insert into silla values (236, "F4", 4);
+insert into silla values (237, "F5", 4);
+insert into silla values (238, "F6", 4);
+insert into silla values (239, "F7", 4);
+insert into silla values (240, "F8", 4);
+
+insert into silla values (241, "G1", 4);
+insert into silla values (242, "G2", 4);
+insert into silla values (243, "G3", 4);
+insert into silla values (244, "G4", 4);
+insert into silla values (245, "G5", 4);
+insert into silla values (246, "G6", 4);
+insert into silla values (247, "G7", 4);
+insert into silla values (248, "G8", 4);
+
+insert into silla values (249, "H1", 4);
+insert into silla values (250, "H2", 4);
+insert into silla values (251, "H3", 4);
+insert into silla values (252, "H4", 4);
+insert into silla values (253, "H5", 4);
+insert into silla values (254, "H6", 4);
+insert into silla values (255, "H7", 4);
+insert into silla values (256, "H8", 4);
+
+
+insert into entrada values (1, 1, 1, 1);
+insert into entrada values (2, 2, 1, 2);
+insert into entrada values (3, 3, 2, 3);
+insert into entrada values (4, 4, 3, 4);
+insert into entrada values (5, 5, 4, 5);
+
 --Cliente
 --Ciudad
 --Administrador teatro
@@ -151,3 +446,5 @@ insert into funcion values (5, 50, 4, 1, 5);
 --Pelicula favorita
 --Cupon Cliente
 --Funcion
+--Silla
+--Entrada

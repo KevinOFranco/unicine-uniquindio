@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
 
@@ -17,6 +18,7 @@ public class ClienteTest {
     private ClienteRepositorio clienteRepositorio;
 
     @Test
+    @Sql ("classpath:dataset.sql")
     public void registrar(){
         LocalDate fecha = LocalDate.now();
         Cliente cliente = new Cliente("Juan", "123", "a@a.com", "pass", fecha);
@@ -24,7 +26,7 @@ public class ClienteTest {
 
         Assertions.assertEquals("123", guardado.getCedula());
     }
-
+    @Test
     public void eliminar(){
 
     }
