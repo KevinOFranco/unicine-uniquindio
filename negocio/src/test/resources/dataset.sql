@@ -5,29 +5,29 @@ insert into cliente values (4, "4", "valentina@email.com", "2001-07-09", "Valent
 insert into cliente values (5, "5", "andres@email.com", "2001-07-19", "Andres", "andres123", null, null);
 
 
-insert into cliente_telefono values (1, "100", "Casa");
-insert into cliente_telefono values (1, "101", "Casa");
-insert into cliente_telefono values (1, "102", "Trabajo");
+insert into cliente_telefono values (1, "CASA", "100");
+insert into cliente_telefono values (1, "CASA", "101");
+insert into cliente_telefono values (1, "TRABAJO", "102");
 
 
-insert into cliente_telefono values (2, "200", "Casa");
-insert into cliente_telefono values (2, "201", "Casa");
-insert into cliente_telefono values (2, "202", "Trabajo");
+insert into cliente_telefono values (2, "CASA", "200");
+insert into cliente_telefono values (2, "CASA", "201");
+insert into cliente_telefono values (2, "TRABAJO", "202");
 
 
-insert into cliente_telefono values (3, "300", "Casa");
-insert into cliente_telefono values (3, "301", "Casa");
-insert into cliente_telefono values (3, "302", "Trabajo");
+insert into cliente_telefono values (3, "CASA", "300");
+insert into cliente_telefono values (3, "CASA", "301");
+insert into cliente_telefono values (3, "TRABAJO", "302");
 
 
-insert into cliente_telefono values (4, "400", "Casa");
-insert into cliente_telefono values (4, "401", "Casa");
-insert into cliente_telefono values (4, "402", "Trabajo");
+insert into cliente_telefono values (4, "CASA", "400");
+insert into cliente_telefono values (4, "CASA", "401");
+insert into cliente_telefono values (4, "TRABAJO", "402");
 
 
-insert into cliente_telefono values (5, "500", "Casa");
-insert into cliente_telefono values (5, "501", "Casa");
-insert into cliente_telefono values (5, "502", "Trabajo");
+insert into cliente_telefono values (5, "CASA", "500");
+insert into cliente_telefono values (5, "CASA", "501");
+insert into cliente_telefono values (5, "TRABAJO", "502");
 
 
 insert into ciudad values (1, "Quindio", "Armenia");
@@ -37,11 +37,11 @@ insert into ciudad values (4, "Meta", "Villavicencio");
 insert into ciudad values (5, "Cundinamarca", "Bogota");
 
 
-insert into pelicula values (1, "Preventa", "Fantasia", "imagenAvatar", "Avatar", null, null, null);
-insert into pelicula values (2, "Cartelera", "Accion", "imagenRyF", "Rapidos y furiosos", null, null, null);
-insert into pelicula values (3, "Cartelera", "Animada", "imagenCoco", "Coco", null, null, null);
-insert into pelicula values (4, "Preventa", "Terror", "imagenLaMonja", "La monja", null, null, null);
-insert into pelicula values (5, "Cartelera", "Ficcion", "imagenThor", "Thor", null, null, null);
+insert into pelicula values (1, "Preventa", "FANTASIA", "imagenAvatar", "Avatar", null, null, null);
+insert into pelicula values (2, "Cartelera", "ACCION", "imagenRyF", "Rapidos y furiosos", null, null, null);
+insert into pelicula values (3, "Cartelera", "ANIMACION", "imagenCoco", "Coco", null, null, null);
+insert into pelicula values (4, "Preventa", "TERROR", "imagenLaMonja", "La monja", null, null, null);
+insert into pelicula values (5, "Cartelera", "FICCION", "imagenThor", "Thor", null, null, null);
 
 
 insert into confiteria values (1, "Gaseosa pequeña y crispetas pequeñas", "imagenCombo1", 1000, "Combo 1");
@@ -93,20 +93,20 @@ insert into sala values (7, 4);
 insert into sala values (8, 4);
 
 
-insert into compra values (1, 1, "2022-10-01 10:00:00", "Tarjeta_Credito");
-insert into compra values (2, 1, "2022-10-02 10:00:00", "PSE");
+insert into compra values (1, "2022-10-01 10:00:00", "Tarjeta_Credito", 1);
+insert into compra values (2, "2022-10-02 10:00:00", "PSE", 1);
 
-insert into compra values (3, 2, "2022-10-03 10:00:00", "Tarjeta_Credito");
-insert into compra values (4, 2, "2022-10-04 10:00:00", "PSE");
+insert into compra values (3, "2022-10-03 10:00:00", "Tarjeta_Credito", 2);
+insert into compra values (4, "2022-10-04 10:00:00", "PSE", 2);
 
-insert into compra values (5, 3, "2022-10-05 10:00:00", "Tarjeta_Debito");
-insert into compra values (6, 3, "2022-10-06 10:00:00", "Tarjeta_Debito");
+insert into compra values (5, "2022-10-05 10:00:00", "Tarjeta_Debito", 3);
+insert into compra values (6, "2022-10-06 10:00:00", "Tarjeta_Debito", 3);
 
-insert into compra values (7, 4, "2022-10-07 10:00:00", "Tarjeta_Credito");
-insert into compra values (8, 4, "2022-10-08 10:00:00", "Tarjeta_Debito");
+insert into compra values (7, "2022-10-07 10:00:00", "Tarjeta_Credito", 4);
+insert into compra values (8, "2022-10-08 10:00:00", "Tarjeta_Debito", 4);
 
-insert into compra values (9, 5, "2022-10-09 10:00:00", "PSE");
-insert into compra values (10, 5, "2022-10-10 10:00:00", "Tarjeta_Credito");
+insert into compra values (9, "2022-10-09 10:00:00", "PSE", 5);
+insert into compra values (10, "2022-10-10 10:00:00", "Tarjeta_Credito", 5);
 
 insert into compra_confiteria values (1, 100, 10, 1, 1);
 insert into compra_confiteria values (2, 200, 20, 2, 1);

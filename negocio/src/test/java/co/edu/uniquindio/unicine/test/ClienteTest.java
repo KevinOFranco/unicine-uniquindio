@@ -9,8 +9,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
-import java.time.LocalDate;
-
 @DataJpaTest
 @AutoConfigureTestDatabase (replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ClienteTest {
@@ -20,11 +18,9 @@ public class ClienteTest {
     @Test
     @Sql ("classpath:dataset.sql")
     public void registrar(){
-        LocalDate fecha = LocalDate.now();
-        Cliente cliente = new Cliente("Juan", "123", "a@a.com", "pass", fecha);
-        Cliente guardado = clienteRepositorio.save(cliente);
+        Long guardado = clienteRepositorio.verificarCliente("ana@email.com", "ana123");
 
-        Assertions.assertEquals("123", guardado.getCedula());
+        Assertions.assertEquals(2, guardado);
     }
     @Test
     public void eliminar(){

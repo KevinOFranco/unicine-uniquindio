@@ -29,6 +29,7 @@ public class Persona implements Serializable {
     @Column (unique = true, nullable = false) //El atributodebe ser unico y obligatorio
     private String email;
     @Column (nullable = false)
+    @ToString.Exclude
     private String password;
     @Column (nullable = false)
     private LocalDate fechaNacimiento;
