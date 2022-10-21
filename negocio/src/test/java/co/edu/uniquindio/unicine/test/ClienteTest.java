@@ -42,4 +42,11 @@ public class ClienteTest {
     public void listar(){
 
     }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerPorCorreo(){
+        Cliente cliente = clienteRepositorio.obtener("juan@email.com");
+        System.out.println(cliente);
+    }
 }
