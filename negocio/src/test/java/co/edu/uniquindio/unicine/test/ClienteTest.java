@@ -7,9 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.jdbc.Sql;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @DataJpaTest
 @AutoConfigureTestDatabase (replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -18,35 +19,58 @@ public class ClienteTest {
     private ClienteRepositorio clienteRepositorio;
 
     @Test
-    @Sql ("classpath:dataset.sql")
+    @Sql("classpath:dataset.sql")
     public void registrar(){
-        LocalDate fecha = LocalDate.now();
-        Cliente cliente = new Cliente("Juan", "123", "a@a.com", "pass", fecha);
-        Cliente guardado = clienteRepositorio.save(cliente);
-
-        Assertions.assertEquals("123", guardado.getCedula());
+        Long guardado = clienteRepositorio.verificarCliente("ana@email.com", "ana123");
+        Assertions.assertEquals(2, guardado);
     }
     @Test
     public void eliminar(){
 
+        clienteRepositorio.eliminarCliente(1);
+        long id = 1;
+        Assertions.assertNull(clienteRepositorio.findById(id).orElse(null));
     }
 
-    public void actualizar(){
-
-    }
-
-    public void obtener(){
-
-    }
-
+    @Test
+    @Sql("classpath:dataset.sql")
     public void listar(){
 
+        List<Cliente> clientes = clienteRepositorio.listarClientes();
+        clientes.forEach(System.out::println);
     }
 
     @Test
     @Sql("classpath:dataset.sql")
     public void obtenerPorCorreo(){
         Cliente cliente = clienteRepositorio.obtener("juan@email.com");
-        System.out.println(cliente);
+        Assertions.assertNotNull(cliente);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void comprobarLogin(){
+        Cliente cliente = clienteRepositorio.comprobarLogin("michael", "1234");
+        Assertions.assertNotNull(cliente);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void paginador(){
+        List<Cliente> clientes = clienteRepositorio.findAll(PageRequest.of(0,2)).toList();
+        clientes.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void recuperarPasswod(){
+
+        String newPassword = "1234";
+        String confirm = "1234";
+        if (newPassword.equals(confirm)){ //Simulacion de confirmacion
+            clienteRepositorio.recuperarPassword(newPassword, "juan@email.com");
+            Assertions.assertEquals(clienteRepositorio.obtener("juan@email.com").getPassword(), newPassword);
+        }
+        Assertions.assertNotEquals(newPassword, clienteRepositorio.obtener("juan@email.com"));
     }
 }
