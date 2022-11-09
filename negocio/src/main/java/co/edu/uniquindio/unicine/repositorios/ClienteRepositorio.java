@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ClienteRepositorio extends JpaRepository<Cliente, Long> {
@@ -20,14 +21,17 @@ public interface ClienteRepositorio extends JpaRepository<Cliente, Long> {
     @Query("select  c from Cliente c where c.email = ?1")
     Cliente obtener(String email);
 
+    @Query("select  c from Cliente c where c.email = ?1")
+    Optional<Cliente> verificarCorreo(String email);
+
     @Query("select c from Cliente c")
     List<Cliente> listarClientes();
 
     @Query("SELECT c.id FROM Cliente c WHERE c.email = :email AND c.password = :password")
     public long verificarCliente (String email, String password);
 
-    @Query("select c from Cliente c where c.username = :username and c.password = :password")
-    Cliente comprobarLogin(String username, String password);
+    @Query("select c from Cliente c where c.email = :correo and c.password = :password")
+    Cliente comprobarLogin(String correo, String password);
 
     //R7
     @Transactional
