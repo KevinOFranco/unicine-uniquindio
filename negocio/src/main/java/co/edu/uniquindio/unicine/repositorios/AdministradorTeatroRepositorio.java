@@ -22,4 +22,9 @@ public interface AdministradorTeatroRepositorio extends JpaRepository<Administra
     @Modifying
     @Query("update AdministradorTeatro set nombre = :nombre where id = :id")
     void actualizarAdmin(String nombre, long id);
+
+    @Transactional
+    @Modifying
+    @Query("delete from AdministradorTeatro a where a.id = :idAminTeatro")
+    void eliminarAdminteatro(long idAminTeatro);
 }

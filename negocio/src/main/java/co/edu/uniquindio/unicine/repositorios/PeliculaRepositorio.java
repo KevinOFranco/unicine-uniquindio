@@ -25,8 +25,10 @@ public interface PeliculaRepositorio extends JpaRepository<Pelicula, Long> {
     @Query("update Pelicula set nombre = :nombre where id = :id")
     void actualizarPelicula(String nombre, long id);
 
-    @Query("delete from Pelicula where nombre = :nombre")
-    Pelicula borrarPelicula(String nombre);
+    @Transactional
+    @Modifying
+    @Query("delete from Pelicula where id = :id")
+    void borrarPelicula(long id);
 
     //R15
     @Query("select p from Pelicula p")

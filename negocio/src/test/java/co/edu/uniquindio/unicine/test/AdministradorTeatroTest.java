@@ -48,5 +48,8 @@ public class AdministradorTeatroTest {
     @Sql("classpath:dataset.sql")
     public void borrarAdmin(){
 
+        long idAdminTeatro = 1;
+        administradorTeatroRepositorio.eliminarAdminteatro(idAdminTeatro);
+        Assertions.assertNull(administradorTeatroRepositorio.obtenerAdminPorId(idAdminTeatro));
     }
 }

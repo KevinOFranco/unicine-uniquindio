@@ -21,6 +21,7 @@ public class PeliculaTest {
     @Autowired
     private PeliculaRepositorio peliculaRepositorio;
 
+    //Gestion peliculas --------------------------------------------------------------
     @Test
     @Sql("classpath:dataset.sql")
     public void crearPelicula(){
@@ -30,7 +31,7 @@ public class PeliculaTest {
         pelicula.setNombre("La momia");
         pelicula.setEstado(Estado.Cartelera);
         pelicula.setGenero(Genero.TERROR);
-        pelicula.setImagen("momia.jps");
+        pelicula.setImagen("momia.jpg");
         peliculaRepositorio.save(pelicula);
         Pelicula peliculaAux = peliculaRepositorio.obtenerPorNombre("La momia");
         Assertions.assertNotNull(peliculaAux);
@@ -65,7 +66,7 @@ public class PeliculaTest {
     @Sql("classpath:dataset.sql")
     public void borrarPelicula(){
 
-        Pelicula borrada = peliculaRepositorio.borrarPelicula("Avatar");
-        Assertions.assertNull(peliculaRepositorio.obtenerPorNombre("Avatar"));
+        peliculaRepositorio.borrarPelicula(1);
+        Assertions.assertNull(peliculaRepositorio.obtenerPorId(1));
     }
 }
