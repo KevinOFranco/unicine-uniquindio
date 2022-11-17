@@ -1,7 +1,6 @@
 package co.edu.uniquindio.unicine.test;
 
 import co.edu.uniquindio.unicine.entidades.Cliente;
-import co.edu.uniquindio.unicine.entidades.Compra;
 import co.edu.uniquindio.unicine.repositorios.ClienteRepositorio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -52,7 +51,8 @@ public class ClienteTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void comprobarLogin(){
-        Assertions.assertNotNull(clienteRepositorio.comprobarLogin("Juan", "juan123"));
+        Cliente cliente = clienteRepositorio.comprobarLogin("michael", "1234");
+        Assertions.assertNotNull(cliente);
     }
 
     @Test
@@ -73,14 +73,5 @@ public class ClienteTest {
             Assertions.assertEquals(clienteRepositorio.obtener("juan@email.com").getPassword(), newPassword);
         }
         Assertions.assertNotEquals(newPassword, clienteRepositorio.obtener("juan@email.com"));
-    }
-
-    @Test
-    @Sql("classpath:dataset.sql")
-    public void listarComprasCliente(){
-
-        long idCliente = 1;
-        List<Compra> compras = clienteRepositorio.obtenerComprasRealizadas(idCliente);
-        compras.forEach(System.out::println);
     }
 }
