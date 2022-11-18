@@ -27,8 +27,10 @@ public class Pelicula  implements Serializable {
     @Enumerated (EnumType.STRING)
     private Genero genero;
 
+    @Lob
     private String sinopsis;
 
+    @Lob
     private String reparto;
 
     private String trailer;

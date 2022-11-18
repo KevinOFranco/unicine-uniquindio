@@ -16,6 +16,9 @@ public interface PeliculaRepositorio extends JpaRepository<Pelicula, Long> {
     @Query("select p from Pelicula p where p.nombre = :nombre")
     Pelicula obtenerPorNombre(String nombre);
 
+
+    Pelicula crearPelicula(Pelicula pelicula);
+
     @Query("select p from Pelicula p where p.id = :id")
     Pelicula obtenerPorId(long id);
 
