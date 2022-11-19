@@ -18,6 +18,9 @@ public interface AdministradorTeatroRepositorio extends JpaRepository<Administra
     @Query("select a from AdministradorTeatro a where a.id = :id")
     AdministradorTeatro obtenerAdminPorId(long id);
 
+    @Query("select a from AdministradorTeatro a where a.email = :email and a.password = :clave")
+    AdministradorTeatro login(String email, String clave);
+
     @Transactional
     @Modifying
     @Query("update AdministradorTeatro set nombre = :nombre where id = :id")

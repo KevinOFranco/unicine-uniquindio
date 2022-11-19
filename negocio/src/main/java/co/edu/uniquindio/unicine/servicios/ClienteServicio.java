@@ -2,6 +2,7 @@ package co.edu.uniquindio.unicine.servicios;
 
 import co.edu.uniquindio.unicine.entidades.Cliente;
 import co.edu.uniquindio.unicine.entidades.Compra;
+import co.edu.uniquindio.unicine.entidades.Pelicula;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -11,17 +12,26 @@ public interface ClienteServicio {
 
     Cliente registrarCliente(Cliente cliente) throws Exception;
 
+    void recuperarClave(String clave, String claveConfirm, String email) throws Exception;
+
     Cliente actualizarCliente(Cliente cliente) throws Exception;
 
-    void eliminarCliente(Long codigoCliente) throws Exception;
+    void eliminarCliente(long codigoCliente) throws Exception;
 
-    List<Cliente> listarClientes();
-
-    List<Cliente> listrarHistorial(Long codigoCliente);
+    List<Compra> listarHistorial(long codigoCliente);
 
     Compra hacerCompra(Compra compra);
 
     boolean redimirCupon (String codigoCupon);
 
+    Cliente obtenerCliente (long id) throws Exception;
+
+    Pelicula buscarPelicula(String nombrePelicula);
+
+    Compra realizarCompra(Compra compra);
+
+    //REDIMIR CUPON PENDIENTE
+
+    List<Compra> listarComprasRealizadas();
 
 }
