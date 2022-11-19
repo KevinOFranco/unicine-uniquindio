@@ -23,16 +23,19 @@ public class ClienteBean implements Serializable {
     @Setter @Getter
     private String confirmacionPassword;
 
+    private String ruta = "index.xhtml";
+
     @PostConstruct
     public void init(){
         cliente = new Cliente();
     }
-    public void registrarCliente(){
+    public String registrarCliente(){
         try {
             if (confirmacionPassword.equals(cliente.getPassword())){
-                clienteServicio.registrarCliente(cliente);
+                //clienteServicio.registrarCliente(cliente);
                 FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Usuario registrado");
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
+                return ruta;
             }else {
                 FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "Las contraseñas no coinciden");
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
@@ -41,7 +44,7 @@ public class ClienteBean implements Serializable {
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
         }
-
+        return "";
     }
 
 }

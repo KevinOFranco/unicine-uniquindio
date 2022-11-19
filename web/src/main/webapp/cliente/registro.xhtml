@@ -9,48 +9,88 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"></h:outputStylesheet>
+    <h:outputScript name="bootstrap.bundle.min.js" library="js"></h:outputScript>
+    <h:outputStylesheet name="styles.css" library="css"></h:outputStylesheet>
     <title>Unicine | Registro</title>
 </h:head>
 <h:body >
-    <p:panel header="Registro cliente">
-        <h:form>
-            <h:panelGrid columns="3" cellpadding="5">
-                <p:outputLabel value="Imagen de perfil: " for="imagen_cliente"></p:outputLabel>
-                <p:fileUpload id="imagen_cliente" value="#{clienteBean.cliente.imagenPerfil}" mode="simple" skinSimple="true"></p:fileUpload>
-                <p:message for="imagen_cliente"></p:message>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <p class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">UNICINE</p>
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <h:graphicImage library="img" name="favicon.png" styleClass="img-icon me-3"></h:graphicImage>
+                </a>
 
-                <p:outputLabel value="Nombre: " for="nombre_cliente"></p:outputLabel>
-                <p:inputText id="nombre_cliente" value="#{clienteBean.cliente.nombre}" required="true"></p:inputText>
-                <p:message for="nombre_cliente"></p:message>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="../index.xhtml" class="nav-link px-2 text-white">Inicio</a></li>
+                    <li><a href="crear_pelicula.xhtml" class="nav-link px-2 text-white">Crear pelicula</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Confiteria</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                </ul>
 
-                <p:outputLabel value="Cedula: " for="cedula_cliente"></p:outputLabel>
-                <p:inputNumber id="cedula_cliente" value="#{clienteBean.cliente.cedula}" required="true" decimalPlaces="0"></p:inputNumber>
-                <p:message for="cedula_cliente"></p:message>
+                <h:form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="">
+                    <div class="input-group">
+                        <p:inputText placeholder="¿Qué película está buscando?" class="form-control form-control-dark text-bg-dark"  required="true" value="#{busquedaBean.busqueda}" action="#{busquedaBean.buscar}"/>
+                        <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}" />
+                    </div>
+                </h:form>
 
-                <p:outputLabel value="Username: " for="username_cliente"></p:outputLabel>
-                <p:inputText id="username_cliente" value="#{clienteBean.cliente.username}"></p:inputText>
-                <p:message for="username_cliente"></p:message>
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-warning"><a href="cliente/registro.xhtml" class="nav-link px-2 text-black">Registrarse</a></button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-                <p:outputLabel value="E-mail: " for="email_cliente"></p:outputLabel>
-                <p:inputText id="email_cliente" value="#{clienteBean.cliente.email}" required="true"></p:inputText>
-                <p:message for="email_cliente"></p:message>
+    <div class="container">
+        <p:panel header="Registro cliente">
+            <h:form>
+                <h:panelGrid columns="3" cellpadding="5">
 
-                <p:outputLabel value="Fecha de nacimiento: " for="fecha_cliente"></p:outputLabel>
-                <p:datePicker id="fecha_cliente" value="#{clienteBean.cliente.fechaNacimiento}" required="true" showIcon="true"></p:datePicker>
-                <p:message for="fecha_cliente"></p:message>
+                    <p:outputLabel value="Imagen de perfil: " for="imagen_cliente"></p:outputLabel>
+                    <p:fileUpload id="imagen_cliente" value="#{clienteBean.cliente.imagenPerfil}" mode="simple" skinSimple="true"></p:fileUpload>
+                    <p:message for="imagen_cliente"></p:message>
 
-                <p:outputLabel value="Contraseña: " for="password_cliente"></p:outputLabel>
-                <p:password id="password_cliente" value="#{clienteBean.cliente.password}" required="true" feedback="true" inline="true"></p:password>
-                <p:message for="password_cliente"></p:message>
+                    <p:outputLabel value="Nombre: " for="nombre_cliente"></p:outputLabel>
+                    <p:inputText id="nombre_cliente" value="#{clienteBean.cliente.nombre}" required="true"></p:inputText>
+                    <p:message for="nombre_cliente"></p:message>
 
-                <p:outputLabel value="Confirmar contraseña: " for="password_confirmacion_cliente"></p:outputLabel>
-                <p:password id="password_confirmacion_cliente" value="#{clienteBean.confirmacionPassword}" required="true"></p:password>
-                <p:message for="password_confirmacion_cliente"></p:message>
+                    <p:outputLabel value="Cedula: " for="cedula_cliente"></p:outputLabel>
+                    <p:inputNumber id="cedula_cliente" value="#{clienteBean.cliente.cedula}" required="true" decimalPlaces="0"></p:inputNumber>
+                    <p:message for="cedula_cliente"></p:message>
 
-            </h:panelGrid>
-            <p:commandButton value="Registrar" action="#{clienteBean.registrarCliente}" update="@form"></p:commandButton>
-            <p:growl for="mensaje_bean" showDetail="true"></p:growl>
-        </h:form>
-    </p:panel>
+                    <p:outputLabel value="Username: " for="username_cliente"></p:outputLabel>
+                    <p:inputText id="username_cliente" value="#{clienteBean.cliente.username}"></p:inputText>
+                    <p:message for="username_cliente"></p:message>
+
+                    <p:outputLabel value="E-mail: " for="email_cliente"></p:outputLabel>
+                    <p:inputText id="email_cliente" value="#{clienteBean.cliente.email}" required="true"></p:inputText>
+                    <p:message for="email_cliente"></p:message>
+
+                    <p:outputLabel value="Fecha de nacimiento: " for="fecha_cliente"></p:outputLabel>
+                    <p:datePicker id="fecha_cliente" value="#{clienteBean.cliente.fechaNacimiento}" required="true" showIcon="true"></p:datePicker>
+                    <p:message for="fecha_cliente"></p:message>
+
+                    <p:outputLabel value="Contraseña: " for="password_cliente"></p:outputLabel>
+                    <p:password id="password_cliente" value="#{clienteBean.cliente.password}" required="true" feedback="true" inline="true"></p:password>
+                    <p:message for="password_cliente"></p:message>
+
+                    <p:outputLabel value="Confirmar contraseña: " for="password_confirmacion_cliente"></p:outputLabel>
+                    <p:password id="password_confirmacion_cliente" value="#{clienteBean.confirmacionPassword}" required="true"></p:password>
+                    <p:message for="password_confirmacion_cliente"></p:message>
+
+                </h:panelGrid>
+
+                <p:commandButton value="Registrar" action="#{clienteBean.registrarCliente}" update="@form"></p:commandButton>
+                <p:growl for="mensaje_bean" showDetail="true"></p:growl>
+
+            </h:form>
+        </p:panel>
+    </div>
+
 </h:body>
 </html>

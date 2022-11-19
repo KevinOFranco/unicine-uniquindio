@@ -44,7 +44,6 @@
                 <p:inputTextarea id="reparto_pelicula" value="#{peliculaBean.pelicula.reparto}" style="vertical-align: top" required="true"></p:inputTextarea>
                 <p:message for="reparto_pelicula"></p:message>
 
-
             </h:panelGrid>
             <p:commandButton value="Crear pelicula" action="#{peliculaBean.registrarPelicula}" update="@form"></p:commandButton>
             <p:growl for="mensaje_bean" showDetail="true"></p:growl>
