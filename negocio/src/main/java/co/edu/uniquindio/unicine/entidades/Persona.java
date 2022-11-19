@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unicine.entidades;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -21,13 +22,16 @@ public class Persona implements Serializable {
     @GeneratedValue (strategy = GenerationType.IDENTITY) //Genera el id sin repetir
     @EqualsAndHashCode.Include
     private Long id;
+    @Length(max = 200)
     @Column (nullable = false)
     private String nombre;
+    @Length(max = 200)
     @Column (unique = true, nullable = false)
     private String cedula;
     @Email //Compara que el email coincida
     @Column (unique = true, nullable = false) //El atributodebe ser unico y obligatorio
     private String email;
+    @Length(min = 8, max = 30)
     @Column (nullable = false)
     @ToString.Exclude
     private String password;
