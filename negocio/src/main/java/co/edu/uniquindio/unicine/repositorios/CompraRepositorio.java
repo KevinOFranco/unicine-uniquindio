@@ -17,4 +17,7 @@ public interface CompraRepositorio extends JpaRepository<Compra, Long> {
 
     @Query("select c from Compra c where c.id = :idCompra")
     Compra obtenerCompraId(Long idCompra);
+
+    @Query("select c from Compra c inner join c.cliente where c.cliente.id = :idCliente")
+    List<Compra> obtenerComprasCliente(Long idCliente);
 }
