@@ -2,13 +2,13 @@ package co.edu.uniquindio.unicine.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
 import javax.mail.internet.MimeMessage;
 
 @Service
-public class EnviarEmail {
+public class EnviarEmail{
 
     @Autowired
     private JavaMailSender javaMailSender;
