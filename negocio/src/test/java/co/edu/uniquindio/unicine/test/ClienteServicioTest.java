@@ -77,6 +77,6 @@ public class ClienteServicioTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void enviarCorreoPrueba(){
-        enviarEmail.enviarEmail("Prube de correo","Hola, esto es una prueba", "maaguirreh@uqvirtual.edu.co");
+        enviarEmail.enviarEmail("Prube de correo","Hola, esto es una prueba", "kevino.francob@uqvirtual.edu.co");
     }
 }

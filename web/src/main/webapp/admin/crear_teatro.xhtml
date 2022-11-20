@@ -47,45 +47,25 @@
     </header>
 
     <div class="container">
-        <p:panel header="Registro cliente">
+        <p:panel header="Crear teatro">
             <h:form>
                 <h:panelGrid columns="3" cellpadding="5">
 
-                    <p:outputLabel value="Imagen de perfil: " for="imagen_cliente"></p:outputLabel>
-                    <p:fileUpload id="imagen_cliente" value="#{clienteBean.cliente.imagenPerfil}" mode="simple" skinSimple="true"></p:fileUpload>
-                    <p:message for="imagen_cliente"></p:message>
+                    <p:outputLabel value="Nombre del teatro: " for="nombre_teatro"></p:outputLabel>
+                    <p:inputText id="nombre_teatro" value="#{teatroBean.teatro.nombre}" required="true"></p:inputText>
+                    <p:message for="nombre_teatro"></p:message>
 
-                    <p:outputLabel value="Nombre: " for="nombre_cliente"></p:outputLabel>
-                    <p:inputText id="nombre_cliente" value="#{clienteBean.cliente.nombre}" required="true"></p:inputText>
-                    <p:message for="nombre_cliente"></p:message>
+                    <p:outputLabel value="Direccion: " for="direccion_teatro"></p:outputLabel>
+                    <p:inputText id="direccion_teatro" value="#{teatroBean.teatro.direccion}" required="true"></p:inputText>
+                    <p:message for="direccion_teatro"></p:message>
 
-                    <p:outputLabel value="Cedula: " for="cedula_cliente"></p:outputLabel>
-                    <p:inputNumber id="cedula_cliente" value="#{clienteBean.cliente.cedula}" required="true" decimalPlaces="0"></p:inputNumber>
-                    <p:message for="cedula_cliente"></p:message>
-
-                    <p:outputLabel value="Username: " for="username_cliente"></p:outputLabel>
-                    <p:inputText id="username_cliente" value="#{clienteBean.cliente.username}"></p:inputText>
-                    <p:message for="username_cliente"></p:message>
-
-                    <p:outputLabel value="E-mail: " for="email_cliente"></p:outputLabel>
-                    <p:inputText id="email_cliente" value="#{clienteBean.cliente.email}" required="true"></p:inputText>
-                    <p:message for="email_cliente"></p:message>
-
-                    <p:outputLabel value="Fecha de nacimiento: " for="fecha_cliente"></p:outputLabel>
-                    <p:datePicker id="fecha_cliente" value="#{clienteBean.cliente.fechaNacimiento}" required="true" showIcon="true"></p:datePicker>
-                    <p:message for="fecha_cliente"></p:message>
-
-                    <p:outputLabel value="Contraseña: " for="password_cliente"></p:outputLabel>
-                    <p:password id="password_cliente" value="#{clienteBean.cliente.password}" required="true" feedback="true" inline="true"></p:password>
-                    <p:message for="password_cliente"></p:message>
-
-                    <p:outputLabel value="Confirmar contraseña: " for="password_confirmacion_cliente"></p:outputLabel>
-                    <p:password id="password_confirmacion_cliente" value="#{clienteBean.confirmacionPassword}" required="true"></p:password>
-                    <p:message for="password_confirmacion_cliente"></p:message>
+                    <p:outputLabel value="Ciudad: " for="ciudad_teatro"></p:outputLabel>
+                    <p:inputText id="ciudad_teatro" value="#{teatroBean.teatro.ciudad}" required="true"></p:inputText>
+                    <p:message for="ciudad_teatro"></p:message>
 
                 </h:panelGrid>
 
-                <p:commandButton value="Registrar" action="#{clienteBean.registrarCliente}" update="@form"></p:commandButton>
+                <p:commandButton value="Registrar" action="#{teatroBean.registrarTeatro}" update="@form"></p:commandButton>
                 <p:growl for="mensaje_bean" showDetail="true"></p:growl>
 
             </h:form>
