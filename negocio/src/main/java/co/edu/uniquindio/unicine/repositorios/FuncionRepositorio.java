@@ -14,4 +14,7 @@ public interface FuncionRepositorio extends JpaRepository<Funcion, Long> {
     //No repite registros. Si una pelicula esta en 2 funciones sale 1 vez.
     @Query("select distinct f.pelicula from Funcion f")
     List<Pelicula> obtenerPeliculasEnFuncion();
+
+    @Query("select f from Funcion f where f.pelicula.nombre = :nombrePelicula")
+    List<Funcion> obtenerFuncionesPorPelicula(String nombrePelicula);
 }

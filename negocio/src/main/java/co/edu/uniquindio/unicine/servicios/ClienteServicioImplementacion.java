@@ -2,11 +2,9 @@ package co.edu.uniquindio.unicine.servicios;
 
 import co.edu.uniquindio.unicine.entidades.Cliente;
 import co.edu.uniquindio.unicine.entidades.Compra;
+import co.edu.uniquindio.unicine.entidades.Funcion;
 import co.edu.uniquindio.unicine.entidades.Pelicula;
-import co.edu.uniquindio.unicine.repositorios.ClienteRepositorio;
-import co.edu.uniquindio.unicine.repositorios.CompraRepositorio;
-import co.edu.uniquindio.unicine.repositorios.CuponRepositorio;
-import co.edu.uniquindio.unicine.repositorios.PeliculaRepositorio;
+import co.edu.uniquindio.unicine.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +19,15 @@ public class ClienteServicioImplementacion implements ClienteServicio{
     private CompraRepositorio compraRepositorio;
     private PeliculaRepositorio peliculaRepositorio;
     private CuponRepositorio cuponRepositorio;
+    private FuncionRepositorio funcionRepositorio;
 
-    public ClienteServicioImplementacion(ClienteRepositorio clienteRepositorio, EnviarEmail enviarEmail, CompraRepositorio compraRepositorio, PeliculaRepositorio peliculaRepositorio, CuponRepositorio cuponRepositorio) {
+    public ClienteServicioImplementacion(ClienteRepositorio clienteRepositorio, EnviarEmail enviarEmail, CompraRepositorio compraRepositorio, PeliculaRepositorio peliculaRepositorio, CuponRepositorio cuponRepositorio, FuncionRepositorio funcionRepositorio) {
         this.clienteRepositorio = clienteRepositorio;
         this.enviarEmail = enviarEmail;
         this.compraRepositorio = compraRepositorio;
         this.peliculaRepositorio = peliculaRepositorio;
         this.cuponRepositorio = cuponRepositorio;
+        this.funcionRepositorio = funcionRepositorio;
     }
 
     @Override
@@ -118,5 +118,12 @@ public class ClienteServicioImplementacion implements ClienteServicio{
     public List<Compra> listarComprasRealizadas() {
 
         return compraRepositorio.findAll();
+    }
+
+    @Override
+    public List<Funcion> listarFuncionesPorPelicula(String nombrePelicula) {
+
+        List<Funcion> funciones = funcionRepositorio.obtenerFuncionesPorPelicula(nombrePelicula);
+        return funciones;
     }
 }

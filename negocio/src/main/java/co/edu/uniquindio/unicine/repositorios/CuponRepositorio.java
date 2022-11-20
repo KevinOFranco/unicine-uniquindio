@@ -14,14 +14,8 @@ public interface CuponRepositorio extends JpaRepository<Cupon, String> {
 
     @Query("select c from Cupon c")
     List<Cupon> listarCupones();
-
-<<<<<<< HEAD
-    @Query("select c from Cupon c where c.codigo = :codigo")
-    Cupon buscarCuponId(String codigo);
-=======
     @Query("select c from Cupon c where c.codigo = :idCupon")
     Cupon buscarCuponId(String idCupon);
->>>>>>> 74aa46f2e33acc40991d0f8f7659ca3bee3950f9
 
     @Transactional
     @Modifying

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unicine.test;
 
 import co.edu.uniquindio.unicine.entidades.Cliente;
+import co.edu.uniquindio.unicine.entidades.Funcion;
 import co.edu.uniquindio.unicine.servicios.ClienteServicio;
 import co.edu.uniquindio.unicine.servicios.EnviarEmail;
 import org.junit.jupiter.api.Assertions;
@@ -76,7 +77,16 @@ public class ClienteServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
+    public void listarFuncionesPorPelicula(){
+        List<Funcion> funciones = clienteServicio.listarFuncionesPorPelicula("Avatar");
+        for (Funcion funcion: funciones) {
+            System.out.println(funcion.getId());
+        }
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
     public void enviarCorreoPrueba(){
-        enviarEmail.enviarEmail("Prube de correo","Hola, esto es una prueba", "maaguirreh@uqvirtual.edu.co");
+        enviarEmail.enviarEmail("Prube de correo","Hola, esto es una prueba", "kevino.francob@uqvirtual.edu.co");
     }
 }

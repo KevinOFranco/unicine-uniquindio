@@ -2,6 +2,7 @@ package co.edu.uniquindio.unicine.servicios;
 
 import co.edu.uniquindio.unicine.entidades.Cliente;
 import co.edu.uniquindio.unicine.entidades.Compra;
+import co.edu.uniquindio.unicine.entidades.Funcion;
 import co.edu.uniquindio.unicine.entidades.Pelicula;
 import org.springframework.data.jpa.repository.Query;
 
@@ -33,5 +34,7 @@ public interface ClienteServicio {
     //REDIMIR CUPON PENDIENTE
 
     List<Compra> listarComprasRealizadas();
+
+    List<Funcion> listarFuncionesPorPelicula(String nombrePelicula);
 
 }
