@@ -45,7 +45,7 @@
             </div>
         </div>
     </header>
-
+    <div class="b-example-divider"></div>
     <div class="container">
         <p:panel header="Crear teatro">
             <h:form>
@@ -60,7 +60,10 @@
                     <p:message for="direccion_teatro"></p:message>
 
                     <p:outputLabel value="Ciudad: " for="ciudad_teatro"></p:outputLabel>
-                    <p:inputText id="ciudad_teatro" value="#{teatroBean.teatro.ciudad}" required="true"></p:inputText>
+                    <p:selectOneMenu id="ciudad_teatro" value="#{teatroBean.teatro.ciudad}" converter="#{ciudadConverter}" required="true">
+                        <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true" itemValue="#{null}"></f:selectItem>
+                        <f:selectItems value="#{teatroBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}"></f:selectItems>
+                    </p:selectOneMenu>
                     <p:message for="ciudad_teatro"></p:message>
 
                 </h:panelGrid>
@@ -71,6 +74,6 @@
             </h:form>
         </p:panel>
     </div>
-
+    <div class="b-example-divider"></div>
 </h:body>
 </html>

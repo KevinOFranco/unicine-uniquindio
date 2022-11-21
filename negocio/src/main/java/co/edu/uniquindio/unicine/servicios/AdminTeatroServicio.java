@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unicine.servicios;
 
-import co.edu.uniquindio.unicine.entidades.AdministradorTeatro;
-import co.edu.uniquindio.unicine.entidades.Funcion;
-import co.edu.uniquindio.unicine.entidades.Sala;
-import co.edu.uniquindio.unicine.entidades.Teatro;
+import co.edu.uniquindio.unicine.entidades.*;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -44,4 +41,8 @@ public interface AdminTeatroServicio {
     Sala obtenerSala(int idSala) throws Exception;
 
     List<Sala> listarSalas();
+
+    Ciudad obtenerCiudad(Long idCiudad) throws Exception;
+
+    List<Ciudad> listarCiudades();
 }

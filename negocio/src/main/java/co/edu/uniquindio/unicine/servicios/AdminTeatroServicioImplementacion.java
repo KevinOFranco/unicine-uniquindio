@@ -1,13 +1,7 @@
 package co.edu.uniquindio.unicine.servicios;
 
-import co.edu.uniquindio.unicine.entidades.AdministradorTeatro;
-import co.edu.uniquindio.unicine.entidades.Funcion;
-import co.edu.uniquindio.unicine.entidades.Sala;
-import co.edu.uniquindio.unicine.entidades.Teatro;
-import co.edu.uniquindio.unicine.repositorios.AdministradorTeatroRepositorio;
-import co.edu.uniquindio.unicine.repositorios.FuncionRepositorio;
-import co.edu.uniquindio.unicine.repositorios.SalaRepositorio;
-import co.edu.uniquindio.unicine.repositorios.TeatroRepositorio;
+import co.edu.uniquindio.unicine.entidades.*;
+import co.edu.uniquindio.unicine.repositorios.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,16 +10,18 @@ import java.util.Optional;
 @Service
 public class AdminTeatroServicioImplementacion implements AdminTeatroServicio{
 
-    private AdministradorTeatroRepositorio administradorTeatroRepositorio;
-    private TeatroRepositorio teatroRepositorio;
-    private SalaRepositorio salaRepositorio;
-    private FuncionRepositorio funcionRepositorio;
+    private final AdministradorTeatroRepositorio administradorTeatroRepositorio;
+    private final TeatroRepositorio teatroRepositorio;
+    private final SalaRepositorio salaRepositorio;
+    private final FuncionRepositorio funcionRepositorio;
+    private final CiudadRepositorio ciudadRepositorio;
 
-    public AdminTeatroServicioImplementacion(AdministradorTeatroRepositorio administradorTeatroRepositorio, TeatroRepositorio teatroRepositorio, SalaRepositorio salaRepositorio, FuncionRepositorio funcionRepositorio) {
+    public AdminTeatroServicioImplementacion(AdministradorTeatroRepositorio administradorTeatroRepositorio, TeatroRepositorio teatroRepositorio, SalaRepositorio salaRepositorio, FuncionRepositorio funcionRepositorio, CiudadRepositorio ciudadRepositorio) {
         this.administradorTeatroRepositorio = administradorTeatroRepositorio;
         this.teatroRepositorio = teatroRepositorio;
         this.salaRepositorio = salaRepositorio;
         this.funcionRepositorio = funcionRepositorio;
+        this.ciudadRepositorio = ciudadRepositorio;
     }
 
     @Override
@@ -39,7 +35,6 @@ public class AdminTeatroServicioImplementacion implements AdminTeatroServicio{
 
     @Override
     public Teatro crearTeatro(Teatro teatro) throws Exception {
-
         return teatroRepositorio.save(teatro);
     }
 
@@ -146,5 +141,18 @@ public class AdminTeatroServicioImplementacion implements AdminTeatroServicio{
     @Override
     public List<Sala> listarSalas() {
         return salaRepositorio.findAll();
+    }
+
+    @Override
+    public Ciudad obtenerCiudad(Long idCiudad) throws Exception {
+        Optional<Ciudad> ciudad = ciudadRepositorio.findById(idCiudad);
+        if (ciudad.isEmpty())
+            throw new Exception("No se ha encontrado la ciudad con ID:" + idCiudad);
+        return ciudad.get();
+    }
+
+    @Override
+    public List<Ciudad> listarCiudades() {
+        return ciudadRepositorio.findAll();
     }
 }

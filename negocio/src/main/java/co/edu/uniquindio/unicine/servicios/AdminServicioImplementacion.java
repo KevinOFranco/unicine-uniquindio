@@ -1,10 +1,20 @@
 package co.edu.uniquindio.unicine.servicios;
 
 import co.edu.uniquindio.unicine.entidades.*;
+import co.edu.uniquindio.unicine.repositorios.AdministradorTeatroRepositorio;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AdminServicioImplementacion implements AdminServicio{
+
+    private final AdministradorTeatroRepositorio administradorTeatroRepositorio;
+
+    public AdminServicioImplementacion(AdministradorTeatroRepositorio administradorTeatroRepositorio) {
+        this.administradorTeatroRepositorio = administradorTeatroRepositorio;
+    }
+
     @Override
     public Administrador login(String correo, String password) throws Exception {
         return null;
@@ -27,7 +37,10 @@ public class AdminServicioImplementacion implements AdminServicio{
 
     @Override
     public AdministradorTeatro obtenerAdminTeatro(long idAdmin) throws Exception {
-        return null;
+        Optional<AdministradorTeatro> adminBuscado = administradorTeatroRepositorio.findById(idAdmin);
+        if (adminBuscado.isEmpty())
+            throw new Exception("No se ha encontrado el administrador de teatro con ID:" + idAdmin);
+        return adminBuscado.get();
     }
 
     @Override
