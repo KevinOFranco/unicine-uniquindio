@@ -9,10 +9,48 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"></h:outputStylesheet>
+    <h:outputScript name="bootstrap.bundle.min.js" library="js"></h:outputScript>
+    <h:outputStylesheet name="styles.css" library="css"></h:outputStylesheet>
     <title>Unicine | Crear pelicula</title>
 </h:head>
 <h:body>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <p class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">UNICINE</p>
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <h:graphicImage library="img" name="favicon.png" styleClass="img-icon me-3"></h:graphicImage>
+                </a>
 
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="../index.xhtml" class="nav-link px-2 text-white">Inicio</a></li>
+                    <li><a href="../admin/crear_pelicula.xhtml" class="nav-link px-2 text-white">Crear pelicula</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Confiteria</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                </ul>
+
+                <h:form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="">
+                    <div class="input-group">
+                        <p:inputText placeholder="¿Qué película está buscando?"
+                                     class="form-control form-control-dark text-bg-dark" required="true"
+                                     value="#{busquedaBean.busqueda}" action="#{busquedaBean.buscar}"/>
+                        <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}"/>
+                    </div>
+                </h:form>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-warning"><a href="cliente/registro.xhtml"
+                                                                     class="nav-link px-2 text-black">Registrarse</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="b-example-divider"></div>
     <p:panel header="Registro pelicula">
         <h:form>
             <h:panelGrid columns="3" cellpadding="5">
