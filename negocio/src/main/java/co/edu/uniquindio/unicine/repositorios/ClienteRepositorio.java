@@ -2,6 +2,8 @@ package co.edu.uniquindio.unicine.repositorios;
 
 import co.edu.uniquindio.unicine.entidades.Cliente;
 import co.edu.uniquindio.unicine.entidades.Compra;
+import co.edu.uniquindio.unicine.entidades.Estado;
+import co.edu.uniquindio.unicine.entidades.Pelicula;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -46,4 +48,10 @@ public interface ClienteRepositorio extends JpaRepository<Cliente, Long> {
 
     @Query("select com from Cliente cli join cli.compras com where cli.id = :idCliente")
     List<Compra> obtenerComprasRealizadas(long idCliente);
+
+    @Query("select distinct f.pelicula from Funcion f where f.pelicula.estado = :estado")
+    List<Pelicula> listarPeliculasPorEstado(Estado estado);
+
+    @Query("select distinct f.pelicula from Funcion f where f.pelicula.estado = :estado and f.sala.teatro.ciudad.id = :idCiudad")
+    List<Pelicula> listarPeliculasPorEstadoYCiudad(Estado estado, Long idCiudad);
 }

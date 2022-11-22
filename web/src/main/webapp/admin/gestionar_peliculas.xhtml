@@ -25,7 +25,7 @@
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="../index.xhtml" class="nav-link px-2 text-white">Inicio</a></li>
-                    <li><a href="../admin/crear_pelicula.xhtml" class="nav-link px-2 text-white">Crear pelicula</a></li>
+                    <li><a href="../admin/gestionar_peliculas.xhtml" class="nav-link px-2 text-white">Crear pelicula</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Confiteria</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">About</a></li>
@@ -54,21 +54,10 @@
     <p:panel header="Registro pelicula">
         <h:form>
             <h:panelGrid columns="3" cellpadding="5">
-                <p:outputLabel value="Imagen de la pelicula: " for="imagen_pelicula"></p:outputLabel>
-                <p:fileUpload id="imagen_pelicula" value="#{peliculaBean.pelicula.imagen}" mode="simple" skinSimple="true"></p:fileUpload>
-                <p:message for="imagen_pelicula"></p:message>
 
                 <p:outputLabel value="Nombre: " for="nombre_pelicula"></p:outputLabel>
                 <p:inputText id="nombre_pelicula" value="#{peliculaBean.pelicula.nombre}" required="true"></p:inputText>
                 <p:message for="nombre_pelicula"></p:message>
-
-                <p:outputLabel value="Genero: " for="genero_pelicula"></p:outputLabel>
-                <p:inputText id="genero_pelicula" value="#{peliculaBean.pelicula.genero}" required="true"></p:inputText>
-                <p:message for="genero_pelicula"></p:message>
-
-                <p:outputLabel value="Estado: " for="estado_pelicula"></p:outputLabel>
-                <p:inputText id="estado_pelicula" value="#{peliculaBean.pelicula.estado}" required="true"></p:inputText>
-                <p:message for="estado_pelicula"></p:message>
 
                 <p:outputLabel value="Trailer: " for="trailer_pelicula"></p:outputLabel>
                 <p:inputText id="trailer_pelicula" value="#{peliculaBean.pelicula.trailer}" ></p:inputText>
@@ -81,6 +70,13 @@
                 <p:outputLabel value="Reparto: " for="reparto_pelicula"></p:outputLabel>
                 <p:inputTextarea id="reparto_pelicula" value="#{peliculaBean.pelicula.reparto}" style="vertical-align: top" required="true"></p:inputTextarea>
                 <p:message for="reparto_pelicula"></p:message>
+
+                <p:outputLabel value="Genero: " for="generos_peliculas"></p:outputLabel>
+                <p:selectManyCheckbox id="generos_peliculas" value="#{peliculaBean.pelicula.genero}" layout="grid" columns="3">
+                    <f:selectItems value="#{peliculaBean.generos}" var="genero" itemLabel="#{genero}" itemValue="#{genero}"/>
+
+                </p:selectManyCheckbox>
+                <p:message for="generos_peliculas"></p:message>
 
             </h:panelGrid>
             <p:commandButton value="Crear pelicula" action="#{peliculaBean.registrarPelicula}" update="@form"></p:commandButton>

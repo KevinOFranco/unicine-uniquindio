@@ -1,4 +1,5 @@
 co.edu.uniquindio.unicine.converter.CiudadConverter
+co.edu.uniquindio.unicine.converter.EstadoConverter
 com.sun.faces.cdi.CdiConverter
 com.sun.faces.cdi.CdiValidator
 com.sun.faces.component.ComponentResourceContainer

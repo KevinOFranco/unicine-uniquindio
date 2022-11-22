@@ -1,4 +1,6 @@
 package co.edu.uniquindio.unicine.bean;
+import co.edu.uniquindio.unicine.entidades.Estado;
+import co.edu.uniquindio.unicine.entidades.Genero;
 import co.edu.uniquindio.unicine.entidades.Pelicula;
 import co.edu.uniquindio.unicine.servicios.PeliculaServicio;
 import lombok.Getter;
@@ -11,6 +13,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 @ViewScoped
@@ -21,14 +25,20 @@ public class PeliculaBean implements Serializable {
     @Autowired
     private PeliculaServicio peliculaServicio;
 
+    @Getter @Setter
+    private List<Genero> generos;
+
 
     @PostConstruct
     public void init(){
         pelicula = new Pelicula();
+        generos = Arrays.asList(Genero.values());
     }
 
     public void registrarPelicula(){
         try {
+            pelicula.setImagen("");
+            pelicula.setEstado(Estado.Cartelera);
             peliculaServicio.crearPelicula(pelicula);
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Pelicula registrada");
             FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);

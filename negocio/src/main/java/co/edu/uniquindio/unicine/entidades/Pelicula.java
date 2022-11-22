@@ -24,8 +24,9 @@ public class Pelicula  implements Serializable {
     private String nombre;
 
     @Column (nullable = false)
+    @ElementCollection
     @Enumerated (EnumType.STRING)
-    private Genero genero;
+    private List<Genero> genero;
 
     @Lob
     private String sinopsis;
@@ -44,7 +45,6 @@ public class Pelicula  implements Serializable {
 
     @OneToMany (mappedBy = "pelicula")
     @ToString.Exclude
-
     private List<Funcion> funciones;
 
     @OneToMany (mappedBy = "pelicula")
@@ -52,10 +52,8 @@ public class Pelicula  implements Serializable {
     private List<PeliculaFavorita> peliculaFavoritas;
 
     @Builder
-
-    public Pelicula(String nombre, Genero genero, String sinopsis, String reparto, String trailer, Estado estado, String imagen) {
+    public Pelicula(String nombre, String sinopsis, String reparto, String trailer, Estado estado, String imagen) {
         this.nombre = nombre;
-        this.genero = genero;
         this.sinopsis = sinopsis;
         this.reparto = reparto;
         this.trailer = trailer;

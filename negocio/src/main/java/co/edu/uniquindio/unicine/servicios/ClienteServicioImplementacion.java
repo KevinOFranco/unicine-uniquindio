@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unicine.servicios;
 
-import co.edu.uniquindio.unicine.entidades.Cliente;
-import co.edu.uniquindio.unicine.entidades.Compra;
-import co.edu.uniquindio.unicine.entidades.Funcion;
-import co.edu.uniquindio.unicine.entidades.Pelicula;
+import co.edu.uniquindio.unicine.entidades.*;
 import co.edu.uniquindio.unicine.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -125,5 +122,20 @@ public class ClienteServicioImplementacion implements ClienteServicio{
 
         List<Funcion> funciones = funcionRepositorio.obtenerFuncionesPorPelicula(nombrePelicula);
         return funciones;
+    }
+
+    @Override
+    public Ciudad obtenerGenero(long id) {
+        return null;
+    }
+
+    @Override
+    public List<Pelicula> listarPeliculasPorEstado(Estado estado) {
+        return clienteRepositorio.listarPeliculasPorEstado(estado);
+    }
+
+    @Override
+    public List<Pelicula> listarPeliculasPorEstadoYCiudad(Estado estado, Long idCiudad) {
+        return clienteRepositorio.listarPeliculasPorEstadoYCiudad(estado, idCiudad);
     }
 }

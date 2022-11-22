@@ -37,12 +37,20 @@ insert into ciudad values (4, "Meta", "Villavicencio");
 insert into ciudad values (5, "Cundinamarca", "Bogota");
 
 
-insert into pelicula values (1, "Preventa", "FANTASIA", "imagenAvatar", "Avatar", null, null, null);
-insert into pelicula values (2, "Cartelera", "ACCION", "imagenRyF", "Rapidos y furiosos", null, null, null);
-insert into pelicula values (3, "Cartelera", "ANIMACION", "imagenCoco", "Coco", null, null, null);
-insert into pelicula values (4, "Preventa", "TERROR", "imagenLaMonja", "La monja", null, null, null);
-insert into pelicula values (5, "Cartelera", "CIENCIA_FICCION", "imagenThor", "Thor", null, null, null);
+insert into pelicula values (1, "Preventa", "imagenAvatar", "Avatar", null, null, null);
+insert into pelicula values (2, "Cartelera", "imagenRyF", "Rapidos y furiosos", null, null, null);
+insert into pelicula values (3, "Cartelera", "imagenCoco", "Coco", null, null, null);
+insert into pelicula values (4, "Preventa", "imagenLaMonja", "La monja", null, null, null);
+insert into pelicula values (5, "Cartelera", "imagenThor", "Thor", null, null, null);
 
+
+insert into pelicula_genero values (1, "CIENCIA_FICCION");
+insert into pelicula_genero values (1, "FANTASIA");
+insert into pelicula_genero values (2, "ACCION");
+insert into pelicula_genero values (3, "ANIMACION");
+insert into pelicula_genero values (4, "TERROR");
+insert into pelicula_genero values (5, "CIENCIA_FICCION");
+insert into pelicula_genero values (5, "ACCION");
 
 insert into confiteria values (1, "Gaseosa pequeña y crispetas pequeñas", "imagenCombo1", 1000, "Combo 1");
 insert into confiteria values (2, "Gaseosa mediana y crispetas medianas", "imagenCombo2", 2000, "Combo 2");

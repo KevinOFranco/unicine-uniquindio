@@ -5,6 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -27,7 +28,8 @@
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="index.xhtml" class="nav-link px-2 text-secondary">Inicio</a></li>
-                    <li><a href="admin/crear_pelicula.xhtml" class="nav-link px-2 text-white">Crear pelicula</a></li>
+                    <li><a href="admin/gestionar_peliculas.xhtml" class="nav-link px-2 text-white">Gestionar peliculas</a></li>
+                    <li><a href="admin/gestionar_teatros.xhtml" class="nav-link px-2 text-white">Gestionar teatros</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Confiteria</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">About</a></li>
@@ -100,11 +102,75 @@
         </div>
 
     <h1>Hola Mundo</h1>
-    <h1>#{inicioBean.mensaje}</h1>
 
-    <div class="cartelera">
+    <div jsf:id="listas_peliculas" class="container">
+        <div>
+            <h1>Cartelera</h1>
+            <div class="row mb-2">
+                <p:repeat value="#{inicioBean.carteleras}" var="pelicula" >
+                    <div class="col-md-6">
+                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong style="color: darkmagenta" class="d-inline-block mb-2">#{pelicula.genero}</strong>
+                                <h3 class="mb-0">#{pelicula.nombre}</h3>
+                                <div class="mb-1 text-muted">Nov 11</div>
+                                <p class="mb-auto">#{pelicula.sinopsis}</p>
+                                <a href="#" class="stretched-link">Continue reading</a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
+                            </div>
+                        </div>
+                    </div>
+                </p:repeat>
+            </div>
+        </div>
+        <div>
+            <h1>Preventa</h1>
+            <div class="row mb-2">
+                <p:repeat value="#{inicioBean.preventas}" var="pelicula" >
+                    <div class="col-md-6">
+                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong style="color: darkmagenta" class="d-inline-block mb-2">#{pelicula.genero}</strong>
+                                <h3 class="mb-0">#{pelicula.nombre}</h3>
+                                <div class="mb-1 text-muted">Nov 11</div>
+                                <p class="mb-auto">#{pelicula.sinopsis}</p>
+                                <a href="#" class="stretched-link">Continue reading</a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+                            </div>
+                        </div>
+                    </div>
+                </p:repeat>
+            </div>
+        </div>
     </div>
+
+    <p:dialog id="ciudad_dialogo" header="Seleccione su ciudad" widgetVar="ciudad_dialogo" visible="true" modal="true">
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
+                <p:outputLabel value="Ciudad: " for="ciudad_origen"></p:outputLabel>
+                <p:selectOneMenu id="ciudad_origen" value="#{inicioBean.ciudad}"
+                                 converter="#{ciudadConverter}" required="true">
+                    <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"
+                                  itemValue="#{null}"></f:selectItem>
+                    <f:selectItems value="#{inicioBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}"
+                                   itemValue="#{ciudad}"></f:selectItems>
+                </p:selectOneMenu>
+                <p:message for="ciudad_origen"></p:message>
+
+            </h:panelGrid>
+
+            <p:commandButton value="Seleccionar ciudad" action="#{inicioBean.seleccionarCiudad}" oncomplete="PF('ciudad_dialogo').hide()" icon="pi pi-check"
+                             update="@form, listas_peliculas"></p:commandButton>
+            <p:growl for="mensaje_bean" showDetail="true"></p:growl>
+
+        </h:form>
+    </p:dialog>
 
     <div class="b-example-divider"></div>
 
@@ -147,5 +213,7 @@
     </div>
 
     <div class="b-example-divider"></div>
+
+
 </h:body>
 </html>
