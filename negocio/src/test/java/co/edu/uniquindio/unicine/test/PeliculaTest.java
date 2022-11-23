@@ -29,9 +29,6 @@ public class PeliculaTest {
         long id = 6;
         pelicula.setId(id);
         pelicula.setNombre("La momia");
-        pelicula.setEstado(Estado.Cartelera);
-        pelicula.setGenero(Genero.TERROR);
-        pelicula.setImagen("momia.jpg");
         peliculaRepositorio.save(pelicula);
         Pelicula peliculaAux = peliculaRepositorio.obtenerPorNombre("La momia");
         Assertions.assertNotNull(peliculaAux);

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unicine.repositorios;
 
+import co.edu.uniquindio.unicine.entidades.Ciudad;
 import co.edu.uniquindio.unicine.entidades.Funcion;
 import co.edu.uniquindio.unicine.entidades.Pelicula;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,7 @@ public interface FuncionRepositorio extends JpaRepository<Funcion, Long> {
 
     @Query("select f from Funcion f where f.pelicula.nombre = :nombrePelicula")
     List<Funcion> obtenerFuncionesPorPelicula(String nombrePelicula);
+
+    @Query("select f from Funcion f where f.sala.teatro.ciudad.id = :ciudadId and f.pelicula.id = :peliculaId")
+    List<Funcion> obtenerFuncionesPorCiudadYPelicula(Long ciudadId, Long peliculaId);
 }

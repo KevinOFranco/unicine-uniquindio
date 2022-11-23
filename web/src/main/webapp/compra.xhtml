@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/WEB-INF/template.xhtml">
+    <ui:define name="title">Unicine | Detalle de la pelicula</ui:define>
+    <ui:define name="content">
+
+
+        <div class="container mt-3">
+            <p:panel header="Asientos">
+                <h4 style="text-align: center">Pantalla</h4>
+                <div >
+                    <div style="columns: 8">
+                        <p:repeat value="#{compraBean.sillas}" var="silla">
+                            <p:commandButton style="margin-top: 10px" onkeypress="" type="button" iconPos="top" value="#{silla.ubicacion}" icon="pi pi-inbox" styleClass="ui-button-outlined ui-button-success" />
+                        </p:repeat>
+                    </div>
+                </div>
+            </p:panel>
+        </div>
+        <div class="container mt-3">
+            <p:panel header="Confitería">
+                <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                    <p:repeat value="#{compraBean.confiteria}" var="confiteria">
+                        <div class="col">
+                            <div class="card mb-4 rounded-3 shadow-sm">
+                                <div class="card-header py-3">
+                                    <h4 class="my-0 fw-normal">#{confiteria.titulo}</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-auto d-none d-lg-block imagen-pelicula">
+                                        <img src="https://archivos-cms.cinecolombia.com/images/_aliases/medium/8/7/5/3/13578-13-esl-CO/COMBITO.png" alt="#{confiteria.titulo}"/>
+                                    </div>
+                                    <h1 class="card-title pricing-card-title">$#{confiteria.precio}<small class="text-muted fw-light">/cu</small></h1>
+                                    <ul class="list-unstyled mt-3 mb-4">
+                                        <li>#{confiteria.descripcion}</li>
+                                    </ul>
+                                    <div class="row row-cols-1 row-cols-md-3 text-center">
+                                        <div class="col">
+                                            <p:commandButton icon="pi pi-minus" styleClass="rounded-button ui-button-danger ui-button-outlined" />
+                                        </div>
+                                        <div class="col">
+                                            <p>0</p>
+                                        </div>
+                                        <div class="col">
+                                            <p:commandButton icon="pi pi-plus" styleClass="rounded-button ui-button-success ui-button-outlined" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p:repeat>
+                </div>
+            </p:panel>
+        </div>
+
+        <div class="container mt-3">
+            <p:panel header="Detalle de compra">
+                <p>Precio de entradas: </p>
+                <hr/>
+                <p>Precio de confitería: </p>
+                <hr/>
+                <p>Total: $</p>
+            </p:panel>
+        </div>
+
+        <div class="container mt-3">
+            <p:panel header="Finalizar compra">
+                <p>Nombre: </p>
+                <p>Correo: </p>
+
+                <br/>
+                <h6>Redimir cupón: </h6>
+                <p:inputText></p:inputText>
+                <br/>
+                <p:commandButton styleClass="mt-5" value="Finalizar compra"/>
+            </p:panel>
+        </div>
+
+
+    </ui:define>
+</ui:composition>
+</html>
