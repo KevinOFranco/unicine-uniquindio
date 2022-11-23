@@ -74,20 +74,7 @@
             <p:panel header="Finalizar compra">
                 <p>Nombre: </p>
                 <p>Correo: </p>
-                <h:form>
-                    <h:panelGrid columns="3" cellpadding="5">
-                        <p:outputLabel value="Medio de pago: " for="medio-de-pago"></p:outputLabel>
-                        <p:selectOneMenu id="medio-de-pago" value="#{compraBean.medioDePago}" required="true">
-                            <f:selectItem itemLabel="Seleccione un medio de pago" noSelectionOption="true"
-                                          itemValue="#{null}"></f:selectItem>
-                            <f:selectItems value="#{compraBean.mediosDePago}" var="medio" itemLabel="#{medio}"
-                                           itemValue="#{medio}"></f:selectItems>
-                        </p:selectOneMenu>
-                        <p:message for="medio-de-pago"></p:message>
 
-                    </h:panelGrid>
-
-                </h:form>
                 <br/>
                 <h6>Redimir cupón: </h6>
                 <p:inputText></p:inputText>

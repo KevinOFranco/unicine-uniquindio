@@ -17,35 +17,26 @@
                 <h:form>
                     <h:panelGrid columns="3" cellpadding="5">
 
+                        <p:outputLabel value="Título: " for="titulo_confiteria"></p:outputLabel>
+                        <p:inputText id="titulo_confiteria" value="#{confiteriaBean.confiteria.titulo}" required="true"></p:inputText>
+                        <p:message for="titulo_confiteria"></p:message>
+
+                        <p:outputLabel value="Precio: " for="precio_confiteria"></p:outputLabel>
+                        <p:inputText id="precio_confiteria" value="#{confiteriaBean.confiteria.precio}" ></p:inputText>
+                        <p:message for="precio_confiteria"></p:message>
+
+                        <p:outputLabel value="Descripción: " for="descripcion_confiteria"></p:outputLabel>
+                        <p:inputTextarea id="descripcion_confiteria" value="#{confiteriaBean.confiteria.descripcion}" style="vertical-align: top" required="true"></p:inputTextarea>
+                        <p:message for="descripcion_confiteria"></p:message>
+
                         <p:outputLabel value="Seleccione la imagen: " for="imagenes"></p:outputLabel>
                         <p:fileUpload id="imagenes"
-                                      listener="#{peliculaBean.subirImagenes}" mode="advanced"
+                                      listener="#{confiteriaBean.subirImagenes}" mode="advanced"
                                       multiple="true" sizeLimit="1000000" fileLimit="2"
                                       allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" />
                         <p:message for="imagenes"></p:message>
 
-                        <p:outputLabel value="Nombre: " for="nombre_pelicula"></p:outputLabel>
-                        <p:inputText id="nombre_pelicula" value="#{peliculaBean.pelicula.nombre}" required="true"></p:inputText>
-                        <p:message for="nombre_pelicula"></p:message>
 
-                        <p:outputLabel value="Trailer: " for="trailer_pelicula"></p:outputLabel>
-                        <p:inputText id="trailer_pelicula" value="#{peliculaBean.pelicula.trailer}" ></p:inputText>
-                        <p:message for="trailer_pelicula"></p:message>
-
-                        <p:outputLabel value="Sinopsis: " for="sinopsis_pelicula"></p:outputLabel>
-                        <p:inputTextarea id="sinopsis_pelicula" value="#{peliculaBean.pelicula.sinopsis}" style="vertical-align: top" required="true"></p:inputTextarea>
-                        <p:message for="sinopsis_pelicula"></p:message>
-
-                        <p:outputLabel value="Reparto: " for="reparto_pelicula"></p:outputLabel>
-                        <p:inputTextarea id="reparto_pelicula" value="#{peliculaBean.pelicula.reparto}" style="vertical-align: top" required="true"></p:inputTextarea>
-                        <p:message for="reparto_pelicula"></p:message>
-
-                        <p:outputLabel value="Genero: " for="generos_peliculas"></p:outputLabel>
-                        <p:selectManyCheckbox id="generos_peliculas" value="#{peliculaBean.pelicula.genero}" layout="grid" columns="3">
-                            <f:selectItems value="#{peliculaBean.generos}" var="genero" itemLabel="#{genero}" itemValue="#{genero}"/>
-
-                        </p:selectManyCheckbox>
-                        <p:message for="generos_peliculas"></p:message>
 
                     </h:panelGrid>
                     <p:commandButton value="Crear pelicula" action="#{peliculaBean.registrarPelicula}" update="@form"></p:commandButton>

@@ -119,4 +119,9 @@ public class AdminServicioImplementacion implements AdminServicio{
         return confiteriaRepositorio.findAll();
     }
 
+    @Override
+    public List<Pelicula> listarPeliculas() {
+        return peliculaRepositorio.listarPeliculas();
+    }
+
 }

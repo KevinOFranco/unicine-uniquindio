@@ -51,7 +51,7 @@ public class CompraBean implements Serializable {
     private List<Confiteria> confiteriaSeleccionada;
 
     @Getter @Setter
-    private List<MedioPago> mediosDePago;
+    private List<String> mediosDePago;
 
     @Getter @Setter
     private Ciudad ciudad;
@@ -64,10 +64,9 @@ public class CompraBean implements Serializable {
         try {
             if (funcionId != null && !funcionId.isEmpty()){
                 funcion = adminTeatroServicio.obtenerFuncion(Long.parseLong(funcionId));
-                ciudades = adminTeatroServicio.listarCiudades();
                 sillas = funcion.getSala().getSillas();
                 confiteria = adminServicio.listarConfiteria();
-                mediosDePago = Arrays.asList(MedioPago.values());
+                mediosDePago = Arrays.asList(MedioPago.values().toString());
                 teatros = new ArrayList<>();
                 funciones = new ArrayList<>();
             }

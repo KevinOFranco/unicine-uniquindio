@@ -1,8 +1,5 @@
 package co.edu.uniquindio.unicine.bean;
-import co.edu.uniquindio.unicine.entidades.Estado;
-import co.edu.uniquindio.unicine.entidades.Genero;
-import co.edu.uniquindio.unicine.entidades.Pelicula;
-import co.edu.uniquindio.unicine.entidades.Teatro;
+import co.edu.uniquindio.unicine.entidades.*;
 import co.edu.uniquindio.unicine.servicios.AdminServicio;
 import co.edu.uniquindio.unicine.servicios.AdminTeatroServicio;
 import co.edu.uniquindio.unicine.servicios.CloudinaryServicio;
@@ -24,9 +21,13 @@ import java.util.*;
 
 @Component
 @ViewScoped
-public class PeliculaBean implements Serializable {
+public class ConfiteriaBean implements Serializable {
+
     @Getter @Setter
-    private Pelicula pelicula;
+    private Confiteria confiteria;
+
+    @Getter @Setter
+    private List<Confiteria> confiterias;
 
     @Autowired
     private AdminTeatroServicio adminTeatroServicio;
@@ -55,7 +56,7 @@ public class PeliculaBean implements Serializable {
 
     @PostConstruct
     public void init(){
-        pelicula = new Pelicula();
+        confiteria = new Confiteria();
         peliculas = adminServicio.listarPeliculas();
         peliculasSeleccionadas = new ArrayList<>();
         generos = Arrays.asList(Genero.values());
@@ -63,12 +64,12 @@ public class PeliculaBean implements Serializable {
         editar = false;
     }
 
-    public void registrarPelicula(){
+    public void registrarConfiteria(){
         try {
             if (!imagenes.isEmpty()){
-                pelicula.setImagenes(imagenes);
-                pelicula.setEstado(Estado.Cartelera);
-                peliculaServicio.crearPelicula(pelicula);
+                //confiteria.setImagenes(imagenes);
+                //confiteria.setEstado(Estado.Cartelera);
+                //peliculaServicio.crearPelicula(confiteria);
 
                 FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Pelicula registrada");
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
@@ -87,7 +88,7 @@ public class PeliculaBean implements Serializable {
         try {
             UploadedFile imagen = event.getFile();
             File imagenFile = convertirUploadedFile(imagen);
-            Map resultado = cloudinaryServicio.subirImagen(imagenFile,"peliculas");
+            Map resultado = cloudinaryServicio.subirImagen(imagenFile,"confiteria");
             imagenes.put(resultado.get("public_id").toString(),resultado.get("url").toString());
         }catch (Exception e){
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
@@ -130,12 +131,12 @@ public class PeliculaBean implements Serializable {
     }
 
     public void seleccionarPelicula (Pelicula peliculaSeleccionada){
-        pelicula = peliculaSeleccionada;
+        //pelicula = peliculaSeleccionada;
         editar = true;
     }
 
     public void crearPeliculaDialog(){
         editar = false;
-        pelicula = new Pelicula();
+        //pelicula = new Pelicula();
     }
 }

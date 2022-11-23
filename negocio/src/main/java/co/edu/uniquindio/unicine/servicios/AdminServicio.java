@@ -44,4 +44,6 @@ public interface AdminServicio {
     Cupon obtenerCupon(String codigoCupon);
 
     List<Confiteria> listarConfiteria();
+
+    List<Pelicula> listarPeliculas();
 }

@@ -35,6 +35,7 @@ public class InicioBean implements Serializable {
     @Getter @Setter
     private Ciudad ciudad;
 
+    @Getter @Setter
     private List<String> imagenes;
 
     @PostConstruct
@@ -43,6 +44,8 @@ public class InicioBean implements Serializable {
         preventas = clienteServicio.listarPeliculasPorEstado(Estado.Preventa);
         ciudades = adminTeatroServicio.listarCiudades();
         imagenes = new ArrayList<>();
+        imagenes.add("https://p4.wallpaperbetter.com/wallpaper/997/794/382/miles-morales-spiderman-miles-morales-spider-man-peter-parker-spider-gwen-hd-wallpaper-preview.jpg");
+        imagenes.add("https://wallpapers.com/wallpapers/avatar-neytiri-with-her-ikran-w7iehjttqhaearm7.html");
     }
 
     public void seleccionarCiudad (){
