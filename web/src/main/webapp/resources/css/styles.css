@@ -24,8 +24,20 @@
     }
 }
 
+.imagen-pelicula{
+    width: 200px;
+}
+
+.imagen-pelicula img{
+    width: 100%;
+    height: auto;
+}
+
+.item-pelicula{
+    background: white;
+}
+
 .b-example-divider {
-    height: 3rem;
     background-color: rgba(0, 0, 0, .1);
     border: solid rgba(0, 0, 0, .15);
     border-width: 1px 0;

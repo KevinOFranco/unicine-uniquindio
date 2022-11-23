@@ -31,8 +31,7 @@
                     <li><a href="admin/gestionar_peliculas.xhtml" class="nav-link px-2 text-white">Gestionar peliculas</a></li>
                     <li><a href="admin/gestionar_teatros.xhtml" class="nav-link px-2 text-white">Gestionar teatros</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">Confiteria</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+
                 </ul>
 
                 <h:form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="">
@@ -101,55 +100,59 @@
             </button>
         </div>
 
-    <h1>Hola Mundo</h1>
-
-    <div jsf:id="listas_peliculas" class="container">
-        <div>
-            <h1>Cartelera</h1>
-            <div class="row mb-2">
-                <p:repeat value="#{inicioBean.carteleras}" var="pelicula" >
-                    <div class="col-md-6">
-                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                            <div class="col p-4 d-flex flex-column position-static">
-                                <strong style="color: darkmagenta" class="d-inline-block mb-2">#{pelicula.genero}</strong>
-                                <h3 class="mb-0">#{pelicula.nombre}</h3>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="mb-auto">#{pelicula.sinopsis}</p>
-                                <a href="#" class="stretched-link">Continue reading</a>
-                            </div>
-                            <div class="col-auto d-none d-lg-block">
-                                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
+    <div class="b-example-divider">
+        <div jsf:id="listas_peliculas" class="container">
+            <div>
+                <h3 class="mt-5 mb-5">Cartelera</h3>
+                <div class="row mb-2">
+                    <p:repeat value="#{inicioBean.carteleras}" var="pelicula" >
+                        <div class="col-md-6">
+                            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative item-pelicula">
+                                <div class="col p-4 d-flex flex-column position-static">
+                                    <div class="d-inline-block mb-2">
+                                        <p:repeat value="#{pelicula.genero}" var="genero">
+                                            <p:chip label="#{genero}" styleClass="me-2"/>
+                                        </p:repeat>
+                                    </div>
+                                    <h3 class="mb-0">#{pelicula.nombre}</h3>
+                                    <div class="mb-1 text-muted">Nov 11</div>
+                                    <p class="mb-auto">#{pelicula.sinopsis}</p>
+                                </div>
+                                <div class="col-auto d-none d-lg-block" style="width: 200px">
+                                    <img style="width: 100%; height: auto" src="#{pelicula.imagenPrincipal}" alt="#{pelicula.nombre}"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </p:repeat>
+                    </p:repeat>
+                </div>
             </div>
-        </div>
-        <div>
-            <h1>Preventa</h1>
-            <div class="row mb-2">
-                <p:repeat value="#{inicioBean.preventas}" var="pelicula" >
-                    <div class="col-md-6">
-                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                            <div class="col p-4 d-flex flex-column position-static">
-                                <strong style="color: darkmagenta" class="d-inline-block mb-2">#{pelicula.genero}</strong>
-                                <h3 class="mb-0">#{pelicula.nombre}</h3>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="mb-auto">#{pelicula.sinopsis}</p>
-                                <a href="#" class="stretched-link">Continue reading</a>
-                            </div>
-                            <div class="col-auto d-none d-lg-block">
-                                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
+            <hr class="mt-5"/>
+            <div>
+                <h3 class="mt-5 mb-5">Preventa</h3>
+                <div class="row mb-2">
+                    <p:repeat value="#{inicioBean.preventas}" var="pelicula" >
+                        <div class="col-md-6">
+                            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative item-pelicula">
+                                <div class="col p-4 d-flex flex-column position-static">
+                                    <div class="d-inline-block mb-2">
+                                        <p:repeat value="#{pelicula.genero}" var="genero">
+                                            <p:chip label="#{genero}" styleClass="me-2"/>
+                                        </p:repeat>
+                                    </div>
+                                    <h3 class="mb-0">#{pelicula.nombre}</h3>
+                                    <div class="mb-1 text-muted">Nov 11</div>
+                                    <p class="mb-auto">#{pelicula.sinopsis}</p>
+                                </div>
+                                <div class="col-auto d-none d-lg-block imagen-pelicula">
+                                    <img src="#{pelicula.imagenPrincipal}" alt="#{pelicula.nombre}"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </p:repeat>
+                    </p:repeat>
+                </div>
             </div>
         </div>
     </div>
-
     <p:dialog id="ciudad_dialogo" header="Seleccione su ciudad" widgetVar="ciudad_dialogo" visible="true" modal="true">
         <h:form>
             <h:panelGrid columns="3" cellpadding="5">
@@ -165,7 +168,7 @@
 
             </h:panelGrid>
 
-            <p:commandButton value="Seleccionar ciudad" action="#{inicioBean.seleccionarCiudad}" oncomplete="PF('ciudad_dialogo').hide()" icon="pi pi-check"
+            <p:commandButton styleClass="mt-4" value="Seleccionar ciudad" action="#{inicioBean.seleccionarCiudad}" oncomplete="PF('ciudad_dialogo').hide()" icon="pi pi-check"
                              update="@form, listas_peliculas"></p:commandButton>
             <p:growl for="mensaje_bean" showDetail="true"></p:growl>
 
@@ -213,6 +216,23 @@
     </div>
 
     <div class="b-example-divider"></div>
+
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                    <h:graphicImage library="img" name="favicon.png" styleClass="img-icon me-3"></h:graphicImage>
+                </a>
+                <span class="mb-3 mb-md-0 text-muted">© 2022 Unicine</span>
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-muted" href="#"><i class="pi pi-twitter"/></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><i class="pi pi-instagram"/></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><i class="pi pi-facebook"/></a></li>
+            </ul>
+        </footer>
+    </div>
 
 
 </h:body>

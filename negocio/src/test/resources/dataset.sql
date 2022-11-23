@@ -37,11 +37,11 @@ insert into ciudad values (4, "Meta", "Villavicencio");
 insert into ciudad values (5, "Cundinamarca", "Bogota");
 
 
-insert into pelicula values (1, "Preventa", "imagenAvatar", "Avatar", null, null, null);
-insert into pelicula values (2, "Cartelera", "imagenRyF", "Rapidos y furiosos", null, null, null);
-insert into pelicula values (3, "Cartelera", "imagenCoco", "Coco", null, null, null);
-insert into pelicula values (4, "Preventa", "imagenLaMonja", "La monja", null, null, null);
-insert into pelicula values (5, "Cartelera", "imagenThor", "Thor", null, null, null);
+insert into pelicula values (1, "Preventa", "Avatar", null, "Entramos en el mundo Avatar de la mano de Jake Sully, un ex-Marine en silla de ruedas, que ha sido reclutado para viajar a Pandora, donde existe un mineral raro y muy preciado que puede solucionar la crisis energética existente en la Tierra.", null);
+insert into pelicula values (2, "Cartelera", "Rapidos y furiosos", null, "Cada noche, Los Ángeles es testigo de alguna carrera de coches. Últimamente ha aparecido un nuevo corredor, todos saben que es duro y que es rápido, pero lo que no saben es que es un detective con la determinación de salir victorioso.", null);
+insert into pelicula values (3, "Cartelera", "Coco", null, "Miguel es un niño que sueña con ser músico, pero su familia se lo prohíbe porque su tatarabuelo, músico, los abandonó, y quieren obligar a Miguel a ser zapatero, como todos los miembros de la familia. Por accidente, Miguel entra en la Tierra de los Muertos, de donde sólo podrá salir si un familiar difunto le concede su bendición, pero su tatarabuela se niega a dejarlo volver con los vivos si no promete que no será músico.", null);
+insert into pelicula values (4, "Preventa", "La monja", null, "Una monja se suicida en una abadía rumana y el Vaticano envía a un sacerdote y una novicia a investigar lo sucedido. Lo que ambos encuentran allí es un secreto perverso que los enfrentará cara a cara con el mal en su esencia más pura.", null);
+insert into pelicula values (5, "Cartelera", "Thor", null, "Tras desatar una antigua guerra, el codicioso guerrero Thor es desterrado a la Tierra por su padre para que viva entre los hombres y descubra así el verdadero sentido de la humildad. Allí, sin sus poderes, Thor deberá enfrentarse a las fuerzas más oscuras que su mayor enemigo le enviará desde Asgard.", null);
 
 
 insert into pelicula_genero values (1, "CIENCIA_FICCION");
