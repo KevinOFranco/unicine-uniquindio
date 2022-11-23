@@ -11,7 +11,7 @@
     <ui:define name="content">
 
 
-        <p:dialog id="dialogo_crear" widgetVar="crear_teatro" modal="true" header="#{peliculaBean.mensajeEditar}" showEffect="zoom">
+        <p:dialog id="dialogo_crear" widgetVar="crear_teatro" modal="true" header="#{confiteriaBean.mensajeEditar}" showEffect="zoom">
             <p:scrollPanel>
             <div class="container">
                 <h:form>
@@ -39,13 +39,13 @@
 
 
                     </h:panelGrid>
-                    <p:commandButton value="Crear pelicula" action="#{peliculaBean.registrarPelicula}" update="@form"></p:commandButton>
+                    <p:commandButton value="Crear confiteria" action="#{confiteriaBean.registrarConfiteria}" update="@form,lista"></p:commandButton>
                     <p:growl for="mensaje_bean" showDetail="true"></p:growl>
                 </h:form>
             </div>
         </p:scrollPanel>
         </p:dialog>
-        <p:panel header="Registro pelicula">
+        <p:panel header="Registro Confitería">
 
 
             <div >
@@ -53,15 +53,15 @@
                 <h:form id="crud_teatro">
                     <p:toolbar>
                         <p:toolbarGroup>
-                            <p:commandButton value="Agregar" action="#{peliculaBean.crearPeliculaDialog}" update="dialogo_crear" oncomplete="PF('crear_teatro').show()" styleClass="ui-button-raised ui-button-success me-3"
+                            <p:commandButton value="Agregar" action="#{confiteriaBean.crearConfiteriaDialog}" update="dialogo_crear" oncomplete="PF('crear_teatro').show()" styleClass="ui-button-raised ui-button-success me-3"
                                              icon="pi pi-plus"></p:commandButton>
-                            <p:commandButton id="btn_borrar" value="#{peliculaBean.mensajeEliminar}" disabled="#{peliculaBean.peliculasSeleccionadas.size() == 0}" action="#{peliculaBean.eliminarPeliculas}" styleClass="ui-button-raised ui-button-danger"
+                            <p:commandButton id="btn_borrar" value="#{confiteriaBean.mensajeEliminar}" disabled="#{confiteriaBean.confiteriasSeleccionadas.size() == 0}" action="#{confiteriaBean.eliminarConfiteria}" styleClass="ui-button-raised ui-button-danger"
                                              icon="pi pi-trash" update="crud_teatro:lista,@this,@form"></p:commandButton>
                             <p:growl for="mensaje_bean" showDetail="true"></p:growl>
                         </p:toolbarGroup>
                     </p:toolbar>
-                    <p:dataTable id="lista" value="#{peliculaBean.peliculas}" var="pelicula" paginator="true" rows="5" rowKey="#{pelicula.id}"
-                                 paginatorPosition="bottom" selection="#{peliculaBean.peliculasSeleccionadas}" reflow="true"
+                    <p:dataTable id="lista" value="#{confiteriaBean.confiterias}" var="confiteria" paginator="true" rows="5" rowKey="#{confiteria.id}"
+                                 paginatorPosition="bottom" selection="#{confiteriaBean.confiteriasSeleccionadas}" reflow="true"
                                  rowSelectMode="add">
                         <p:ajax event="rowSelect" update="crud_teatro:btn_borrar" />
                         <p:ajax event="rowUnselect" update="crud_teatro:btn_borrar" />
@@ -72,23 +72,23 @@
                         <p:column selectionMode="multiple" exportable="false" />
 
                         <p:column headerText="Codigo">
-                            <h:outputText value="#{pelicula.id}"/>
+                            <h:outputText value="#{confiteria.id}"/>
                         </p:column>
 
-                        <p:column headerText="Nombre">
-                            <h:outputText value="#{pelicula.nombre}"/>
+                        <p:column headerText="Titulo">
+                            <h:outputText value="#{confiteria.titulo}"/>
                         </p:column>
 
-                        <p:column headerText="Estado">
-                            <h:outputText value="#{pelicula.estado}"/>
+                        <p:column headerText="Precio">
+                            <h:outputText value="#{confiteria.precio}"/>
                         </p:column>
 
-                        <p:column headerText="Genero">
-                            <h:outputText value="#{pelicula.genero}"/>
+                        <p:column headerText="Descripción">
+                            <h:outputText value="#{confiteria.descripcion}"/>
                         </p:column>
 
                         <p:column headerText="">
-                            <p:commandButton value="Editar" action="#{peliculaBean.seleccionarPelicula(pelicula)}" oncomplete="PF('crear_teatro').show()" icon="pi pi-pencil" styleClass="ui-button-raised edit-button rounded-button ui-button-success" update="dialogo_crear"/>
+                            <p:commandButton value="Editar" action="#{confiteriaBean.seleccionarConfiteria(confiteria)}" oncomplete="PF('crear_teatro').show()" icon="pi pi-pencil" styleClass="ui-button-raised edit-button rounded-button ui-button-success" update="dialogo_crear"/>
                         </p:column>
 
                     </p:dataTable>

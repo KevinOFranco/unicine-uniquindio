@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/WEB-INF/template.xhtml">
+    <ui:define name="title">Título de la página de ejemplo</ui:define>
+    <ui:define name="content">
+
+        <p:dialog id="dialogo_crear" widgetVar="crear_teatro" modal="true" header="#{cuponBean.mensajeEditar}" showEffect="zoom">
+            <div class="container">
+                <h:form>
+                    <h:panelGrid columns="3" cellpadding="5">
+
+                        <p:outputLabel value="Código: " for="codigo_cupon"></p:outputLabel>
+                        <p:inputText id="codigo_cupon" value="#{cuponBean.cupon.codigo}"
+                                     required="true"></p:inputText>
+                        <p:message for="codigo_cupon"></p:message>
+
+                        <p:outputLabel value="Porcentaje descuento: " for="porcentaje_cupon"></p:outputLabel>
+                        <p:inputText id="porcentaje_cupon" value="#{cuponBean.cupon.porcentajeDescuento}"
+                                     required="true"></p:inputText>
+                        <p:message for="porcentaje_cupon"></p:message>
+
+                        <p:outputLabel value="Criterio: " for="criterio_cupon"></p:outputLabel>
+                        <p:inputText id="criterio_cupon" value="#{cuponBean.cupon.criterio}"
+                                     required="true"></p:inputText>
+                        <p:message for="criterio_cupon"></p:message>
+
+                        <p:outputLabel value="Descripcion: " for="descripcion_cupon"></p:outputLabel>
+                        <p:inputText id="descripcion_cupon" value="#{cuponBean.cupon.descripcion}"
+                                     required="true"></p:inputText>
+                        <p:message for="descripcion_cupon"></p:message>
+
+                        <p:outputLabel value="Vencimiento: " for="descripcion_cupon"></p:outputLabel>
+                        <p:datePicker id="fecha_cliente" value="#{cuponBean.cupon.fechaVencimiento}" required="true" showIcon="true"></p:datePicker>
+                        <p:message for="descripcion_cupon"></p:message>
+
+                    </h:panelGrid>
+
+                    <p:commandButton value="#{cuponBean.mensajeEditar}" action="#{cuponBean.registrarCupon}" icon="pi pi-plus-circle"
+                                     update="@form,crud_teatro:lista"></p:commandButton>
+                    <p:growl for="mensaje_bean" showDetail="true"></p:growl>
+
+                </h:form>
+            </div>
+        </p:dialog>
+        <div >
+            <div class="b-example-divider"></div>
+            <h:form id="crud_teatro">
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton value="Agregar" action="#{cuponBean.crearDialog}" update="dialogo_crear" oncomplete="PF('crear_teatro').show()" styleClass="ui-button-raised ui-button-success me-3"
+                                         icon="pi pi-plus"></p:commandButton>
+                        <p:commandButton id="btn_borrar" value="#{cuponBean.mensajeEliminar}" disabled="#{cuponBean.cuponesSeleccionados.size() == 0}" action="#{cuponBean.eliminarCupones}" styleClass="ui-button-raised ui-button-danger"
+                                         icon="pi pi-trash" update="crud_teatro:lista,@this,@form"></p:commandButton>
+                        <p:growl for="mensaje_bean" showDetail="true"></p:growl>
+                    </p:toolbarGroup>
+                </p:toolbar>
+                <p:dataTable id="lista" value="#{cuponBean.cupones}" var="cupon" paginator="true" rows="5" rowKey="#{cupon.codigo}"
+                             paginatorPosition="bottom" selection="#{cuponBean.cuponesSeleccionados}" reflow="true"
+                             rowSelectMode="add">
+                    <p:ajax event="rowSelect" update="crud_teatro:btn_borrar" />
+                    <p:ajax event="rowUnselect" update="crud_teatro:btn_borrar" />
+                    <p:ajax event="rowSelectCheckbox" update="crud_teatro:btn_borrar" />
+                    <p:ajax event="rowUnselectCheckbox" update="crud_teatro:btn_borrar" />
+                    <p:ajax event="toggleSelect" update="crud_teatro:btn_borrar" />
+
+                    <p:column selectionMode="multiple" exportable="false" />
+
+                    <p:column headerText="Codigo">
+                        <h:outputText value="#{cupon.codigo}"/>
+                    </p:column>
+
+                    <p:column headerText="Descuento">
+                        <h:outputText value="#{cupon.porcentajeDescuento}"/>
+                    </p:column>
+
+                    <p:column headerText="Criterio">
+                        <h:outputText value="#{cupon.criterio}"/>
+                    </p:column>
+
+                    <p:column headerText="Descripción">
+                        <h:outputText value="#{cupon.descripcion}"/>
+                    </p:column>
+
+                    <p:column headerText="Vencimiento">
+                        <h:outputText value="#{cupon.fechaVencimiento}"/>
+                    </p:column>
+
+                    <p:column headerText="">
+                        <p:commandButton value="Editar" action="#{cuponBean.seleccionarCupon(cupon)}" oncomplete="PF('crear_teatro').show()" icon="pi pi-pencil" styleClass="ui-button-raised edit-button rounded-button ui-button-success" update="dialogo_crear"/>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>
+</html>

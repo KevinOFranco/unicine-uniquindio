@@ -3,6 +3,7 @@ package co.edu.uniquindio.unicine.servicios;
 import co.edu.uniquindio.unicine.entidades.*;
 import co.edu.uniquindio.unicine.repositorios.AdministradorTeatroRepositorio;
 import co.edu.uniquindio.unicine.repositorios.ConfiteriaRepositorio;
+import co.edu.uniquindio.unicine.repositorios.CuponRepositorio;
 import co.edu.uniquindio.unicine.repositorios.PeliculaRepositorio;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,13 @@ public class AdminServicioImplementacion implements AdminServicio{
     private final AdministradorTeatroRepositorio administradorTeatroRepositorio;
     private final PeliculaRepositorio peliculaRepositorio;
 
+    private final CuponRepositorio cuponRepositorio;
     private final ConfiteriaRepositorio confiteriaRepositorio;
 
-    public AdminServicioImplementacion(AdministradorTeatroRepositorio administradorTeatroRepositorio, PeliculaRepositorio peliculaRepositorio, ConfiteriaRepositorio confiteriaRepositorio) {
+    public AdminServicioImplementacion(AdministradorTeatroRepositorio administradorTeatroRepositorio, PeliculaRepositorio peliculaRepositorio, CuponRepositorio cuponRepositorio, ConfiteriaRepositorio confiteriaRepositorio) {
         this.administradorTeatroRepositorio = administradorTeatroRepositorio;
         this.peliculaRepositorio = peliculaRepositorio;
+        this.cuponRepositorio = cuponRepositorio;
         this.confiteriaRepositorio = confiteriaRepositorio;
     }
 
@@ -76,12 +79,12 @@ public class AdminServicioImplementacion implements AdminServicio{
 
     @Override
     public Confiteria crearConfiteria(Confiteria confiteria) {
-        return null;
+        return confiteriaRepositorio.save(confiteria);
     }
 
     @Override
     public void eliminarConfiteria(long idConfiteria) {
-
+        confiteriaRepositorio.deleteById(idConfiteria);
     }
 
     @Override
@@ -96,7 +99,7 @@ public class AdminServicioImplementacion implements AdminServicio{
 
     @Override
     public Cupon crearCupon(Cupon cupon) {
-        return null;
+        return cuponRepositorio.save(cupon);
     }
 
     @Override
@@ -122,6 +125,16 @@ public class AdminServicioImplementacion implements AdminServicio{
     @Override
     public List<Pelicula> listarPeliculas() {
         return peliculaRepositorio.listarPeliculas();
+    }
+
+    @Override
+    public List<Cupon> listarCupones() {
+        return cuponRepositorio.findAll();
+    }
+
+    @Override
+    public List<Pelicula> obtenerPeliculasSimilares(String resultado) {
+        return peliculaRepositorio.obtenerPeliculasSimilares(resultado);
     }
 
 }
