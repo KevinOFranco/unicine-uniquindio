@@ -2,6 +2,7 @@ package co.edu.uniquindio.unicine.servicios;
 
 import co.edu.uniquindio.unicine.entidades.*;
 import co.edu.uniquindio.unicine.repositorios.AdministradorTeatroRepositorio;
+import co.edu.uniquindio.unicine.repositorios.PeliculaRepositorio;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -10,9 +11,11 @@ import java.util.Optional;
 public class AdminServicioImplementacion implements AdminServicio{
 
     private final AdministradorTeatroRepositorio administradorTeatroRepositorio;
+    private final PeliculaRepositorio peliculaRepositorio;
 
-    public AdminServicioImplementacion(AdministradorTeatroRepositorio administradorTeatroRepositorio) {
+    public AdminServicioImplementacion(AdministradorTeatroRepositorio administradorTeatroRepositorio, PeliculaRepositorio peliculaRepositorio) {
         this.administradorTeatroRepositorio = administradorTeatroRepositorio;
+        this.peliculaRepositorio = peliculaRepositorio;
     }
 
     @Override
@@ -60,7 +63,10 @@ public class AdminServicioImplementacion implements AdminServicio{
 
     @Override
     public Pelicula obtenerPelicula(long idPelicula) throws Exception {
-        return null;
+        Optional<Pelicula> pelicula = peliculaRepositorio.findById(idPelicula);
+        if (pelicula.isEmpty())
+            throw new Exception("No se ha encontrado el administrador de teatro con ID:" + idPelicula);
+        return pelicula.get();
     }
 
     @Override
