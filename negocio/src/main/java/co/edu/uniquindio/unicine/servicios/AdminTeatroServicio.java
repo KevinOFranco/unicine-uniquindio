@@ -45,4 +45,8 @@ public interface AdminTeatroServicio {
     Ciudad obtenerCiudad(Long idCiudad) throws Exception;
 
     List<Ciudad> listarCiudades();
+
+    List<Teatro> obtenerTeatrosPorCiudad(Ciudad ciudad);
+
+    List<Funcion> obtenerFuncionesPorCiudadYPelicula(Ciudad ciudad, Pelicula pelicula);
 }

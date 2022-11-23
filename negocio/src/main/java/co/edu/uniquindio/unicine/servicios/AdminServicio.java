@@ -2,6 +2,8 @@ package co.edu.uniquindio.unicine.servicios;
 
 import co.edu.uniquindio.unicine.entidades.*;
 
+import java.util.List;
+
 public interface AdminServicio {
 
     Administrador login(String correo, String password) throws Exception;
@@ -40,4 +42,6 @@ public interface AdminServicio {
     Cupon actualizarCupon(Cupon cupon);
 
     Cupon obtenerCupon(String codigoCupon);
+
+    List<Confiteria> listarConfiteria();
 }

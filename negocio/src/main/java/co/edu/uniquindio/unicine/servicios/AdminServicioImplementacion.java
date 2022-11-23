@@ -2,9 +2,11 @@ package co.edu.uniquindio.unicine.servicios;
 
 import co.edu.uniquindio.unicine.entidades.*;
 import co.edu.uniquindio.unicine.repositorios.AdministradorTeatroRepositorio;
+import co.edu.uniquindio.unicine.repositorios.ConfiteriaRepositorio;
 import co.edu.uniquindio.unicine.repositorios.PeliculaRepositorio;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,9 +15,12 @@ public class AdminServicioImplementacion implements AdminServicio{
     private final AdministradorTeatroRepositorio administradorTeatroRepositorio;
     private final PeliculaRepositorio peliculaRepositorio;
 
-    public AdminServicioImplementacion(AdministradorTeatroRepositorio administradorTeatroRepositorio, PeliculaRepositorio peliculaRepositorio) {
+    private final ConfiteriaRepositorio confiteriaRepositorio;
+
+    public AdminServicioImplementacion(AdministradorTeatroRepositorio administradorTeatroRepositorio, PeliculaRepositorio peliculaRepositorio, ConfiteriaRepositorio confiteriaRepositorio) {
         this.administradorTeatroRepositorio = administradorTeatroRepositorio;
         this.peliculaRepositorio = peliculaRepositorio;
+        this.confiteriaRepositorio = confiteriaRepositorio;
     }
 
     @Override
@@ -108,4 +113,10 @@ public class AdminServicioImplementacion implements AdminServicio{
     public Cupon obtenerCupon(String codigoCupon) {
         return null;
     }
+
+    @Override
+    public List<Confiteria> listarConfiteria() {
+        return confiteriaRepositorio.findAll();
+    }
+
 }

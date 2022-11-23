@@ -13,14 +13,15 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
 @ViewScoped
-public class DetallePeliculaBean implements Serializable {
+public class CompraBean implements Serializable {
 
-    @Value("#{param['pelicula_id']}")
-    private String peliculaId;
+    @Value("#{param['funcion_id']}")
+    private String funcionId;
 
     @Autowired
     private AdminServicio adminServicio;
@@ -29,7 +30,7 @@ public class DetallePeliculaBean implements Serializable {
     private AdminTeatroServicio adminTeatroServicio;
 
     @Getter @Setter
-    private Pelicula pelicula;
+    private Funcion funcion;
 
     @Getter @Setter
     private List<Ciudad> ciudades;
@@ -41,14 +42,32 @@ public class DetallePeliculaBean implements Serializable {
     private List<Funcion> funciones;
 
     @Getter @Setter
+    private List<Silla> sillas;
+
+    @Getter @Setter
+    private List<Confiteria> confiteria;
+
+    @Getter @Setter
+    private List<Confiteria> confiteriaSeleccionada;
+
+    @Getter @Setter
+    private List<MedioPago> mediosDePago;
+
+    @Getter @Setter
     private Ciudad ciudad;
+
+    @Getter @Setter
+    private MedioPago medioDePago;
 
     @PostConstruct
     public void init(){
         try {
-            if (peliculaId != null && !peliculaId.isEmpty()){
-                pelicula = adminServicio.obtenerPelicula(Long.parseLong(peliculaId));
+            if (funcionId != null && !funcionId.isEmpty()){
+                funcion = adminTeatroServicio.obtenerFuncion(Long.parseLong(funcionId));
                 ciudades = adminTeatroServicio.listarCiudades();
+                sillas = funcion.getSala().getSillas();
+                confiteria = adminServicio.listarConfiteria();
+                mediosDePago = Arrays.asList(MedioPago.values());
                 teatros = new ArrayList<>();
                 funciones = new ArrayList<>();
             }
@@ -60,8 +79,7 @@ public class DetallePeliculaBean implements Serializable {
 
     public void actualizarFunciones (){
         if (ciudad != null){
-            funciones = adminTeatroServicio.obtenerFuncionesPorCiudadYPelicula(ciudad, pelicula);
-            teatros = adminTeatroServicio.obtenerTeatrosPorCiudad(ciudad);
+
         }
     }
 

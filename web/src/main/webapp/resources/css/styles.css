@@ -34,7 +34,7 @@
 }
 
 .poster-pelicula{
-    width: 384px;
+    width: 320px;
 }
 
 .poster-pelicula img{
@@ -80,4 +80,13 @@
     text-align: center;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+}
+
+.zoom{
+    transition: transform .2s;
+}
+
+.zoom:hover{
+    transform: scale(1.08);
+    filter: brightness(50%);
 }

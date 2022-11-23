@@ -155,4 +155,14 @@ public class AdminTeatroServicioImplementacion implements AdminTeatroServicio{
     public List<Ciudad> listarCiudades() {
         return ciudadRepositorio.findAll();
     }
+
+    @Override
+    public List<Teatro> obtenerTeatrosPorCiudad(Ciudad ciudad) {
+        return teatroRepositorio.obtenerTeatrosPorCiudad(ciudad.getId());
+    }
+
+    @Override
+    public List<Funcion> obtenerFuncionesPorCiudadYPelicula(Ciudad ciudad, Pelicula pelicula) {
+        return funcionRepositorio.obtenerFuncionesPorCiudadYPelicula(ciudad.getId(), pelicula.getId());
+    }
 }
