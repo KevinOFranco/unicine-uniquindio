@@ -5,10 +5,43 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/WEB-INF/template.xhtml">
     <ui:define name="title">Unicine | Resultados</ui:define>
     <ui:define name="content">
+
+        <div class="b-example-divider">
+            <div jsf:id="listas_peliculas" class="container">
+                <div>
+                    <h3 class="mt-5 mb-5">Resultados</h3>
+                    <div class="row mb-2">
+                        <p:repeat value="#{busquedaBean.peliculas}" var="pelicula" >
+                            <div class="col-md-6">
+                                <a href="/detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="text-decoration-none" >
+                                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative item-pelicula">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <div class="d-inline-block mb-2">
+                                                <p:repeat value="#{pelicula.genero}" var="genero">
+                                                    <p:chip label="#{genero}" styleClass="me-2"/>
+                                                </p:repeat>
+                                            </div>
+                                            <h3 class="mb-0">#{pelicula.nombre}</h3>
+                                            <div class="mb-1 text-muted">Nov 11</div>
+                                            <p class="mb-auto">#{pelicula.sinopsis}</p>
+                                        </div>
+                                        <div class="col-auto d-none d-lg-block imagen-pelicula" >
+                                            <img src="#{pelicula.imagenPrincipal}" alt="#{pelicula.nombre}"/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </p:repeat>
+                    </div>
+                </div>
+                <hr class="mt-5"/>
+            </div>
+        </div>
 
     </ui:define>
 </ui:composition>

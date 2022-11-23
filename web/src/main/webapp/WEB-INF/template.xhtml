@@ -30,14 +30,15 @@
                     <li><a href="/index.xhtml" class="nav-link px-2 text-white">Inicio</a></li>
                     <li><a href="/admin/gestionar_peliculas.xhtml" class="nav-link px-2 text-white">Gestionar peliculas</a></li>
                     <li><a href="/admin/gestionar_teatros.xhtml" class="nav-link px-2 text-white">Gestionar teatros</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Confiteria</a></li>
-
+                    <li><a href="/admin/gestionar_confiteria.xhtml" class="nav-link px-2 text-white">Gestionar confiteria</a></li>
+                    <li><a href="/admin/gestionar_cupones.xhtml" class="nav-link px-2 text-white">Gestionar cupones</a></li>
+                    <li><a href="/admin/gestionar_funciones.xhtml" class="nav-link px-2 text-white">Gestionar funciones</a></li>
                 </ul>
 
                 <h:form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="">
                     <div class="input-group">
-                        <p:inputText placeholder="Buscar película" class="form-control form-control-dark text-bg-dark"  required="true" value="#{busquedaBean.busqueda}" action="#{busquedaBean.buscar}"/>
-                        <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}" />
+                        <p:inputText placeholder="Buscar película" class="form-control form-control-dark text-bg-dark"  required="true" value="#{templateBean.busqueda}" action="#{templateBean.buscar}"/>
+                        <p:commandButton update="@form" icon="pi pi-search" action="#{templateBean.buscar}" />
                     </div>
                 </h:form>
 

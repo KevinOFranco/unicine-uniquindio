@@ -36,9 +36,6 @@ public class ConfiteriaBean implements Serializable {
     private AdminServicio adminServicio;
 
     @Autowired
-    private PeliculaServicio peliculaServicio;
-
-    @Autowired
     private CloudinaryServicio cloudinaryServicio;
 
     @Getter @Setter
@@ -50,7 +47,7 @@ public class ConfiteriaBean implements Serializable {
     private List<Pelicula> peliculas;
 
     @Getter @Setter
-    private List<Pelicula> peliculasSeleccionadas;
+    private List<Confiteria> confiteriasSeleccionadas;
 
     private boolean editar;
 
@@ -58,7 +55,8 @@ public class ConfiteriaBean implements Serializable {
     public void init(){
         confiteria = new Confiteria();
         peliculas = adminServicio.listarPeliculas();
-        peliculasSeleccionadas = new ArrayList<>();
+        confiterias = adminServicio.listarConfiteria();
+        confiteriasSeleccionadas = new ArrayList<>();
         generos = Arrays.asList(Genero.values());
         imagenes = new HashMap<>();
         editar = false;
@@ -66,17 +64,12 @@ public class ConfiteriaBean implements Serializable {
 
     public void registrarConfiteria(){
         try {
-            if (!imagenes.isEmpty()){
-                //confiteria.setImagenes(imagenes);
-                //confiteria.setEstado(Estado.Cartelera);
-                //peliculaServicio.crearPelicula(confiteria);
+                confiteria.setImagen("imagenes");
+                adminServicio.crearConfiteria(confiteria);
+                confiterias.add(confiteria);
 
-                FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Pelicula registrada");
+                FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Confiteria registrada");
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
-            }else{
-                FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "Es necesario subir una imagen");
-                FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
-            }
 
         }catch (Exception e){
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
@@ -89,7 +82,7 @@ public class ConfiteriaBean implements Serializable {
             UploadedFile imagen = event.getFile();
             File imagenFile = convertirUploadedFile(imagen);
             Map resultado = cloudinaryServicio.subirImagen(imagenFile,"confiteria");
-            imagenes.put(resultado.get("public_id").toString(),resultado.get("url").toString());
+            //imagenes.put(resultado.get("public_id").toString(),resultado.get("url").toString());
         }catch (Exception e){
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
@@ -105,14 +98,14 @@ public class ConfiteriaBean implements Serializable {
     }
 
     public String getMensajeEditar(){
-        return editar ? "Editar teatro" : "Crear teatro";
+        return editar ? "Editar confiteria" : "Crear confiteria";
     }
 
-    public void eliminarPeliculas (){
-        peliculasSeleccionadas.forEach( teatroAux -> {
+    public void eliminarConfiteria (){
+        confiteriasSeleccionadas.forEach( confiteraiAux -> {
             try {
-                adminTeatroServicio.eliminarTeatro(teatroAux.getId());
-                peliculas.remove(teatroAux);
+                adminServicio.eliminarConfiteria(confiteraiAux.getId());
+                confiterias.remove(confiteraiAux);
                 FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Eliminación exitosa");
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
             } catch (Exception e) {
@@ -120,23 +113,23 @@ public class ConfiteriaBean implements Serializable {
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
             }
         });
-        peliculasSeleccionadas.clear();
+        confiteriasSeleccionadas.clear();
     }
 
     public String getMensajeEliminar(){
-        if (peliculasSeleccionadas.isEmpty())
+        if (confiteriasSeleccionadas.isEmpty())
             return "Eliminar";
         else
-            return peliculasSeleccionadas.size() == 1 ? "Eliminar 1 elemento" : "Eliminar " + peliculasSeleccionadas.size() + " elementos";
+            return confiteriasSeleccionadas.size() == 1 ? "Eliminar 1 elemento" : "Eliminar " + confiteriasSeleccionadas.size() + " elementos";
     }
 
-    public void seleccionarPelicula (Pelicula peliculaSeleccionada){
-        //pelicula = peliculaSeleccionada;
+    public void seleccionarConfiteria (Confiteria confiteriaSeleccionada){
+        confiteria = confiteriaSeleccionada;
         editar = true;
     }
 
-    public void crearPeliculaDialog(){
+    public void crearConfiteriaDialog(){
         editar = false;
-        //pelicula = new Pelicula();
+        confiteria = new Confiteria();
     }
 }

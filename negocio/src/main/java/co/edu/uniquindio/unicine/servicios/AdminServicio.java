@@ -46,4 +46,8 @@ public interface AdminServicio {
     List<Confiteria> listarConfiteria();
 
     List<Pelicula> listarPeliculas();
+
+    List<Cupon> listarCupones();
+
+    List<Pelicula> obtenerPeliculasSimilares(String resultado);
 }

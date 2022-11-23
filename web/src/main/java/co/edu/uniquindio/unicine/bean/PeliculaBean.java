@@ -2,7 +2,6 @@ package co.edu.uniquindio.unicine.bean;
 import co.edu.uniquindio.unicine.entidades.Estado;
 import co.edu.uniquindio.unicine.entidades.Genero;
 import co.edu.uniquindio.unicine.entidades.Pelicula;
-import co.edu.uniquindio.unicine.entidades.Teatro;
 import co.edu.uniquindio.unicine.servicios.AdminServicio;
 import co.edu.uniquindio.unicine.servicios.AdminTeatroServicio;
 import co.edu.uniquindio.unicine.servicios.CloudinaryServicio;

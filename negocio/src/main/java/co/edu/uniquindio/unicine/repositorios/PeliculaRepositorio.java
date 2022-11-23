@@ -35,4 +35,7 @@ public interface PeliculaRepositorio extends JpaRepository<Pelicula, Long> {
     //R15
     @Query("select p from Pelicula p")
     List<Pelicula> listarPeliculas();
+
+    @Query("select p from Pelicula p where p.nombre like :resultado")
+    List<Pelicula> obtenerPeliculasSimilares(String resultado);
 }
