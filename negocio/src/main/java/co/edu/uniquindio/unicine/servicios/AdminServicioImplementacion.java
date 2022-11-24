@@ -61,7 +61,7 @@ public class AdminServicioImplementacion implements AdminServicio{
 
     @Override
     public void eliminarPelicula(long idPelicula) throws Exception {
-
+        peliculaRepositorio.deleteById(idPelicula);
     }
 
     @Override

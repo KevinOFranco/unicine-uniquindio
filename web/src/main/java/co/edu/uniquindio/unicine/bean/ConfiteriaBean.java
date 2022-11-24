@@ -66,10 +66,15 @@ public class ConfiteriaBean implements Serializable {
         try {
                 confiteria.setImagen("imagenes");
                 adminServicio.crearConfiteria(confiteria);
-                confiterias.add(confiteria);
+                if (!editar) {
+                    confiterias.add(confiteria);
 
-                FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Confiteria registrada");
-                FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
+                    FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Confiteria registrada");
+                    FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
+                }else{
+                    FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Confiteria modificada");
+                    FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);
+                }
 
         }catch (Exception e){
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());

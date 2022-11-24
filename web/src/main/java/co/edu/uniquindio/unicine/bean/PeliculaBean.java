@@ -57,7 +57,7 @@ public class PeliculaBean implements Serializable {
         pelicula = new Pelicula();
         peliculas = adminServicio.listarPeliculas();
         peliculasSeleccionadas = new ArrayList<>();
-        generos = Arrays.asList(Genero.values());
+        generos = List.of(Genero.values());
         imagenes = new HashMap<>();
         editar = false;
     }
@@ -103,13 +103,13 @@ public class PeliculaBean implements Serializable {
     }
 
     public String getMensajeEditar(){
-        return editar ? "Editar teatro" : "Crear teatro";
+        return editar ? "Editar pelicula" : "Crear pelicula";
     }
 
     public void eliminarPeliculas (){
         peliculasSeleccionadas.forEach( teatroAux -> {
             try {
-                adminTeatroServicio.eliminarTeatro(teatroAux.getId());
+                adminServicio.eliminarPelicula(teatroAux.getId());
                 peliculas.remove(teatroAux);
                 FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Eliminación exitosa");
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMessage);

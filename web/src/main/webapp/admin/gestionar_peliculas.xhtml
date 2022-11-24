@@ -10,100 +10,38 @@
     <ui:define name="title">Unicine | Gestion peliculas</ui:define>
     <ui:define name="content">
 
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
 
-        <p:dialog id="dialogo_crear" widgetVar="crear_teatro" modal="true" header="#{peliculaBean.mensajeEditar}" showEffect="zoom">
-            <p:scrollPanel>
-            <div class="container">
-                <h:form>
-                    <h:panelGrid columns="3" cellpadding="5">
+                <p:outputLabel value="Seleccione la imagen: " for="imagenes"></p:outputLabel>
+                <p:fileUpload id="imagenes"
+                              listener="#{peliculaBean.subirImagenes}" mode="advanced"
+                              multiple="true" sizeLimit="1000000" fileLimit="2"
+                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" />
+                <p:message for="imagenes"></p:message>
 
-                        <p:outputLabel value="Seleccione la imagen: " for="imagenes"></p:outputLabel>
-                        <p:fileUpload id="imagenes"
-                                      listener="#{peliculaBean.subirImagenes}" mode="advanced"
-                                      multiple="true" sizeLimit="1000000" fileLimit="2"
-                                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" />
-                        <p:message for="imagenes"></p:message>
+                <p:outputLabel value="Nombre: " for="nombre_pelicula"></p:outputLabel>
+                <p:inputText id="nombre_pelicula" value="#{peliculaBean.pelicula.nombre}" required="true"></p:inputText>
+                <p:message for="nombre_pelicula"></p:message>
+                <p:outputLabel value="Trailer: " for="trailer_pelicula"></p:outputLabel>
+                <p:inputText id="trailer_pelicula" value="#{peliculaBean.pelicula.trailer}" ></p:inputText>
+                <p:message for="trailer_pelicula"></p:message>
+                <p:outputLabel value="Sinopsis: " for="sinopsis_pelicula"></p:outputLabel>
+                <p:inputTextarea id="sinopsis_pelicula" value="#{peliculaBean.pelicula.sinopsis}" style="vertical-align: top" required="true"></p:inputTextarea>
+                <p:message for="sinopsis_pelicula"></p:message>
+                <p:outputLabel value="Reparto: " for="reparto_pelicula"></p:outputLabel>
+                <p:inputTextarea id="reparto_pelicula" value="#{peliculaBean.pelicula.reparto}" style="vertical-align: top" required="true"></p:inputTextarea>
+                <p:message for="reparto_pelicula"></p:message>
+                <p:outputLabel value="Genero: " for="generos_peliculas"></p:outputLabel>
+                <p:selectManyCheckbox id="generos_peliculas" value="#{peliculaBean.pelicula.genero}" layout="grid" columns="3">
+                    <f:selectItems value="#{peliculaBean.generos}" var="genero" itemLabel="#{genero}" itemValue="#{genero}"/>
+                </p:selectManyCheckbox>
+                <p:message for="generos_peliculas"></p:message>
+            </h:panelGrid>
+            <p:commandButton value="Crear pelicula" action="#{peliculaBean.registrarPelicula}" update="@form"></p:commandButton>
+            <p:growl for="mensaje_bean" showDetail="true"></p:growl>
+        </h:form>
 
-                        <p:outputLabel value="Nombre: " for="nombre_pelicula"></p:outputLabel>
-                        <p:inputText id="nombre_pelicula" value="#{peliculaBean.pelicula.nombre}" required="true"></p:inputText>
-                        <p:message for="nombre_pelicula"></p:message>
-
-                        <p:outputLabel value="Trailer: " for="trailer_pelicula"></p:outputLabel>
-                        <p:inputText id="trailer_pelicula" value="#{peliculaBean.pelicula.trailer}" ></p:inputText>
-                        <p:message for="trailer_pelicula"></p:message>
-
-                        <p:outputLabel value="Sinopsis: " for="sinopsis_pelicula"></p:outputLabel>
-                        <p:inputTextarea id="sinopsis_pelicula" value="#{peliculaBean.pelicula.sinopsis}" style="vertical-align: top" required="true"></p:inputTextarea>
-                        <p:message for="sinopsis_pelicula"></p:message>
-
-                        <p:outputLabel value="Reparto: " for="reparto_pelicula"></p:outputLabel>
-                        <p:inputTextarea id="reparto_pelicula" value="#{peliculaBean.pelicula.reparto}" style="vertical-align: top" required="true"></p:inputTextarea>
-                        <p:message for="reparto_pelicula"></p:message>
-
-                        <p:outputLabel value="Genero: " for="generos_peliculas"></p:outputLabel>
-                        <p:selectManyCheckbox id="generos_peliculas" value="#{peliculaBean.pelicula.genero}" layout="grid" columns="3">
-                            <f:selectItems value="#{peliculaBean.generos}" var="genero" itemLabel="#{genero}" itemValue="#{genero}"/>
-
-                        </p:selectManyCheckbox>
-                        <p:message for="generos_peliculas"></p:message>
-
-                    </h:panelGrid>
-                    <p:commandButton value="Crear pelicula" action="#{peliculaBean.registrarPelicula}" update="@form"></p:commandButton>
-                    <p:growl for="mensaje_bean" showDetail="true"></p:growl>
-                </h:form>
-            </div>
-        </p:scrollPanel>
-        </p:dialog>
-        <p:panel header="Registro pelicula">
-
-
-            <div >
-                <div class="b-example-divider"></div>
-                <h:form id="crud_teatro">
-                    <p:toolbar>
-                        <p:toolbarGroup>
-                            <p:commandButton value="Agregar" action="#{peliculaBean.crearPeliculaDialog}" update="dialogo_crear" oncomplete="PF('crear_teatro').show()" styleClass="ui-button-raised ui-button-success me-3"
-                                             icon="pi pi-plus"></p:commandButton>
-                            <p:commandButton id="btn_borrar" value="#{peliculaBean.mensajeEliminar}" disabled="#{peliculaBean.peliculasSeleccionadas.size() == 0}" action="#{peliculaBean.eliminarPeliculas}" styleClass="ui-button-raised ui-button-danger"
-                                             icon="pi pi-trash" update="crud_teatro:lista,@this,@form"></p:commandButton>
-                            <p:growl for="mensaje_bean" showDetail="true"></p:growl>
-                        </p:toolbarGroup>
-                    </p:toolbar>
-                    <p:dataTable id="lista" value="#{peliculaBean.peliculas}" var="pelicula" paginator="true" rows="5" rowKey="#{pelicula.id}"
-                                 paginatorPosition="bottom" selection="#{peliculaBean.peliculasSeleccionadas}" reflow="true"
-                                 rowSelectMode="add">
-                        <p:ajax event="rowSelect" update="crud_teatro:btn_borrar" />
-                        <p:ajax event="rowUnselect" update="crud_teatro:btn_borrar" />
-                        <p:ajax event="rowSelectCheckbox" update="crud_teatro:btn_borrar" />
-                        <p:ajax event="rowUnselectCheckbox" update="crud_teatro:btn_borrar" />
-                        <p:ajax event="toggleSelect" update="crud_teatro:btn_borrar" />
-
-                        <p:column selectionMode="multiple" exportable="false" />
-
-                        <p:column headerText="Codigo">
-                            <h:outputText value="#{pelicula.id}"/>
-                        </p:column>
-
-                        <p:column headerText="Nombre">
-                            <h:outputText value="#{pelicula.nombre}"/>
-                        </p:column>
-
-                        <p:column headerText="Estado">
-                            <h:outputText value="#{pelicula.estado}"/>
-                        </p:column>
-
-                        <p:column headerText="Genero">
-                            <h:outputText value="#{pelicula.genero}"/>
-                        </p:column>
-
-                        <p:column headerText="">
-                            <p:commandButton value="Editar" action="#{peliculaBean.seleccionarPelicula(pelicula)}" oncomplete="PF('crear_teatro').show()" icon="pi pi-pencil" styleClass="ui-button-raised edit-button rounded-button ui-button-success" update="dialogo_crear"/>
-                        </p:column>
-
-                    </p:dataTable>
-                </h:form>
-            </div>
-        </p:panel>
     </ui:define>
 </ui:composition>
 </html>
